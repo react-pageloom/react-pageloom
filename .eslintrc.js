@@ -5,6 +5,7 @@ module.exports = {
 		'plugin:react/recommended',
 		'plugin:jsx-a11y/recommended',
 		'plugin:prettier/recommended',
+		'plugin:storybook/recommended',
 	],
 	plugins: ['react-hooks', 'testing-library'],
 	env: {
@@ -56,5 +57,6 @@ module.exports = {
 		'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
 		'@typescript-eslint/no-explicit-any': 'off',
 		'@typescript-eslint/ban-ts-comment': 'off',
+		'linebreak-style': ['windows', 'unix'],
 	},
 };
