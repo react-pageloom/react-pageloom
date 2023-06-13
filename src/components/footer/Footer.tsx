@@ -6,16 +6,17 @@ import { Footer } from './Footer.styled';
 
 export interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {
 	/**
-	 * Id of the Footer to be used for anchor links
+	 * @internal If true, the scroll will snap to the block
 	 *
+	 * @default false
 	 */
-	id: string;
+	snap?: boolean;
 	/**
-	 * Label of the Footer to be used for anchor links
+	 * @internal If true, the navigation bar will be fixed to the top of the page
 	 *
-	 * @default ''
+	 * @default false
 	 */
-	label?: string;
+	fixedNav?: boolean;
 	sx?: ThemeUICSSObject;
 }
 
@@ -28,12 +29,21 @@ export interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {
  * </Footer>
  */
 export const PageFooter = forwardRef<HTMLDivElement, FooterProps>(
-	({ className, children, ...rest }, ref): JSX.Element => {
+	(
+		{ className, children, fixedNav = false, snap = false, ...rest },
+		ref,
+	): JSX.Element => {
 		const classes = classNames('loom-footer_root', className);
 
 		return (
 			// @ts-ignore
-			<Footer className={classes} {...rest} ref={ref}>
+			<Footer
+				className={classes}
+				$fixedNav={fixedNav}
+				$snap={snap}
+				{...rest}
+				ref={ref}
+			>
 				{children}
 			</Footer>
 		);

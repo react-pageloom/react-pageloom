@@ -8,13 +8,19 @@ import {
 	isValidElement,
 	ReactElement,
 } from 'react';
-import { Link } from 'react-scroll';
+import { animateScroll, Link } from 'react-scroll';
 import { ThemeUICSSObject } from 'theme-ui';
 import { JSX } from 'theme-ui/jsx-runtime';
 import { classNames } from '@src/utils/classNames';
 import { PageBlock } from '../block';
 import { PageHeader } from '../header';
-import { Wrapper } from './Wrapper.styled';
+import {
+	Nav,
+	NavLinksContainer,
+	NavLogoContainer,
+} from '../header/Header.styled';
+import { HeaderLogo } from '../logo';
+import { BlockContainer, Wrapper } from './Wrapper.styled';
 
 export interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 	/**
@@ -23,6 +29,18 @@ export interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 	 * @default 500
 	 */
 	duration?: number;
+	/**
+	 * If true, the scroll will snap to the block
+	 *
+	 * @default false
+	 */
+	snapScroll?: boolean;
+	/**
+	 * If true, the navigation bar will be fixed to the top of the page
+	 *
+	 * @default false
+	 */
+	fixedNav?: boolean;
 	sx?: ThemeUICSSObject;
 }
 
@@ -35,21 +53,54 @@ export interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
  * </Wrapper>
  */
 export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
-	({ className, children, duration = 500, ...rest }, ref): JSX.Element => {
+	(
+		{
+			className,
+			children,
+			duration = 500,
+			snapScroll = false,
+			fixedNav = false,
+			...rest
+		},
+		ref,
+	): JSX.Element => {
 		let header: React.ReactElement | null = null;
+		let footer: React.ReactElement | null = null;
+		let logoElement: React.ReactElement | null = null;
 		const blocks: React.ReactElement[] = [];
 
 		const classes = classNames('loom-wrapper_root', className);
 
-		Children.forEach(children, (child) => {
+		Children.forEach(children, (child, index) => {
 			if (!isValidElement(child)) return;
 
 			const componentType = child.type as React.ComponentType;
 
 			if (componentType.displayName === PageHeader.displayName) {
-				header = child;
+				const headerProps = {
+					...child.props,
+					snap: snapScroll,
+					fixedNav,
+				};
+				header = cloneElement(child as ReactElement, headerProps);
+				logoElement = (child as ReactElement).props.children.find(
+					(child) => child.type === HeaderLogo,
+				);
 			} else if (componentType.displayName === PageBlock.displayName) {
-				blocks.push(child);
+				const block = cloneElement(child as ReactElement, {
+					snap: snapScroll,
+					fixedNav,
+					key: `loom-block-${index}`,
+				});
+
+				blocks.push(block);
+			} else if (componentType.displayName === 'PageFooter') {
+				footer = cloneElement(child as ReactElement, {
+					...child.props,
+					snap: snapScroll,
+					fixedNav,
+					key: `loom-footer-${index}`,
+				});
 			} else {
 				console.warn(
 					`Invalid child component ${componentType.displayName} found in the Wrapper`,
@@ -62,11 +113,14 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 			return (
 				<Link
 					key={`loom-link-${id}`}
-					activeClass="loom-active"
+					className="loom-nav_link"
+					activeClass="loom-nav_active"
 					to={id}
 					spy={true}
 					smooth={true}
 					duration={duration}
+					offset={fixedNav ? -55 : 0}
+					{...(snapScroll && { containerId: 'loom-wrapper' })}
 				>
 					{label || id}
 				</Link>
@@ -78,9 +132,35 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 		return (
 			<>
 				<Global styles={emotionReset} />
-				<Wrapper className={classes} {...rest} ref={ref}>
+				<Wrapper
+					id="loom-wrapper"
+					className={classes}
+					$snapScroll={snapScroll}
+					ref={ref}
+					{...rest}
+				>
+					{fixedNav && (
+						<Nav $fixed={fixedNav} className="loom-header_nav">
+							<NavLogoContainer
+								className="loom-header_nav-logo"
+								onClick={() => {
+									animateScroll.scrollToTop({
+										duration,
+										...(snapScroll && { containerId: 'loom-wrapper' }),
+										to: 'loom-header',
+									});
+								}}
+							>
+								{logoElement}
+							</NavLogoContainer>
+							<NavLinksContainer className="loom-header_nav-links">
+								{blockLinks}
+							</NavLinksContainer>
+						</Nav>
+					)}
 					{enhancedHeader}
-					{blocks}
+					<BlockContainer>{blocks}</BlockContainer>
+					{footer}
 				</Wrapper>
 			</>
 		);

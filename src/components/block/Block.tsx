@@ -16,6 +16,18 @@ export interface BlockProps extends React.HTMLAttributes<HTMLDivElement> {
 	 * @default ''
 	 */
 	label?: string;
+	/**
+	 * @internal If true, the scroll will snap to the block
+	 *
+	 * @default false
+	 */
+	snap?: boolean;
+	/**
+	 * @internal If true, the navigation bar will be fixed to the top of the page
+	 *
+	 * @default false
+	 */
+	fixedNav?: boolean;
 	sx?: ThemeUICSSObject;
 }
 
@@ -28,17 +40,30 @@ export interface BlockProps extends React.HTMLAttributes<HTMLDivElement> {
  * </Block>
  */
 export const PageBlock = forwardRef<HTMLDivElement, BlockProps>(
-	({ className, children, id, label = '', ...rest }, ref): JSX.Element => {
+	(
+		{
+			className,
+			children,
+			id,
+			label = '',
+			snap = false,
+			fixedNav = false,
+			...rest
+		},
+		ref,
+	): JSX.Element => {
 		const classes = classNames('loom-block_root', className);
 
 		return (
 			<Block
 				className={classes}
-				{...rest}
+				$fixedNav={fixedNav}
+				$snap={snap}
 				ref={ref}
 				id={id}
 				aria-label={label}
 				aria-labelledby={label}
+				{...rest}
 			>
 				{children}
 			</Block>
