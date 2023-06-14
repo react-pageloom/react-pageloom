@@ -20,11 +20,19 @@ export const Header = styled.header<{
 		scroll-margin-top: ${$fixedNav ? `${NAVBAR_HEIGHT}px` : '0'};
 	`}
 
+	& > .loom-container_root {
+		margin-top: 1px;
+		height: calc(100dvh - ${NAVBAR_HEIGHT}px - 2px);
+	}
+
 	${({ $fixedNav }) =>
 		$fixedNav &&
 		`
 		margin-top: ${NAVBAR_HEIGHT}px;
-	`}
+		min-height: calc(100dvh - ${NAVBAR_HEIGHT}px);
+		max-height: calc(100dvh - ${NAVBAR_HEIGHT}px);
+
+		`}
 `;
 
 export const Nav = styled.nav<{

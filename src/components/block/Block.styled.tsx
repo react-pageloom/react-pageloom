@@ -20,4 +20,15 @@ export const Block = styled.section<{
 		scroll-snap-align: start;
 		scroll-margin-top: ${$fixedNav ? `${NAVBAR_HEIGHT}px` : '0'};
 	`}
+
+	${({ $fixedNav }) =>
+		$fixedNav &&
+		`
+		max-height: calc(100dvh - ${NAVBAR_HEIGHT}px);
+		min-height: calc(100dvh - ${NAVBAR_HEIGHT}px);
+
+		& > .loom-container_root {
+			height: calc(100dvh - ${NAVBAR_HEIGHT}px);
+		}
+	`}
 `;

@@ -11,7 +11,7 @@ import {
 
 function App() {
 	return (
-		<PageWrapper snapScroll fixedNav>
+		<PageWrapper>
 			{/* HEADER */}
 			<PageHeader
 				sx={{
@@ -19,8 +19,34 @@ function App() {
 				}}
 			>
 				<HeaderLogo>Logo</HeaderLogo>
-				<Container>
-					<h1>Header</h1>
+				<Container
+					sx={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						backgroundColor: 'lightblue',
+						padding: '1rem',
+					}}
+				>
+					<h1
+						style={{
+							textAlign: 'center',
+							fontSize: '2rem',
+						}}
+					>
+						<span
+							style={{
+								fontWeight: 'bold',
+							}}
+						>
+							PageLoom
+						</span>{' '}
+						is a powerful, flexible library for React.js that simplifies the
+						process of creating stunning, interactive webpage layouts. It
+						leverages the concept of "Blocks" and "Headers", providing an
+						intuitive, component-based system to build your application's user
+						interface.
+					</h1>
 				</Container>
 			</PageHeader>
 			{/* BLOCKS */}
@@ -34,20 +60,54 @@ function App() {
 					alignItems: 'center',
 				}}
 			>
-				<Container>
-					<h1>How to use?</h1>
-					<div
+				<Container
+					sx={{
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'center',
+
+						justifyContent: 'space-around',
+					}}
+				>
+					<h1
 						style={{
-							maxWidth: '500px',
+							textAlign: 'center',
+							fontSize: '2rem',
 						}}
 					>
+						How to use?
+					</h1>
+					<div>
 						<SyntaxHighlighter language="tsx" style={dark}>
 							{`
-import { PageFooter } from 'react-pageloom';
+import {
+	HeaderLogo,
+	PageBlock,
+	PageHeader,
+	PagetFooter,
+	PageWrapper,
+	Container,
+} from 'react-pageloom';
 
-<PageFooter>
-	<h1>Footer</h1>
-</PageFooter>
+<PageWrapper>
+	<PageHeader>
+		<HeaderLogo>Logo</HeaderLogo>
+		<Container>
+			{/* your content here */}
+		</Container>
+	</PageHeader>
+	<PageBlock id="block-1" label="Block 1">
+		<Container>
+			{/* your content here */}
+		</Container>
+	</PageBlock>
+	<PageBlock id="block-2" label="Block 2">
+		{/* your content here */}
+	</PageBlock>
+	<PageFooter>
+		{/* your content here */}
+	</PageFooter>
+</PageWrapper>
 			`}
 						</SyntaxHighlighter>
 					</div>
@@ -60,7 +120,29 @@ import { PageFooter } from 'react-pageloom';
 					backgroundColor: 'lightblue',
 				}}
 			>
-				<h1>Block 2</h1>
+				{' '}
+				<Container
+					sx={{
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'center',
+
+						justifyContent: 'space-around',
+					}}
+				>
+					<h1
+						style={{
+							textAlign: 'center',
+							fontSize: '2rem',
+						}}
+					>
+						Optional props
+					</h1>
+					<div>sx - custom styles for the block</div>
+					<div>PageWrapper</div>
+					<div>fixedNav - use fixed navigation</div>
+					<div>snapScroll - use snap scrolling</div>
+				</Container>
 			</PageBlock>
 			<PageBlock
 				id="block-3"

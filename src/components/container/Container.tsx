@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+import { ThemeUICSSObject } from 'theme-ui';
 import { classNames } from '@src/utils/classNames';
 import * as Sc from './Container.styled';
 
@@ -9,6 +10,13 @@ export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 	 * @default false
 	 */
 	fluid?: boolean;
+	/**
+	 * @internal Fixed navbar enabled
+	 *
+	 * @default false
+	 */
+	fixedNav?: boolean;
+	sx?: ThemeUICSSObject;
 }
 
 /**
@@ -24,24 +32,31 @@ export const Container = ({
 	fluid = false,
 	className,
 	children,
+	fixedNav = false,
+	sx,
 	...rest
 }: ContainerProps) => {
 	const classes = classNames(
-		'Container-root',
-		fluid ? 'Container-fluid' : '',
+		'loom-container_root',
+		fluid ? 'loom-container_fluid' : '',
 		className,
 	);
 
 	if (fluid) {
 		return (
-			<Sc.FluidContainer className={classes} {...rest}>
+			<Sc.FluidContainer
+				sx={sx}
+				$fixedNav={fixedNav}
+				className={classes}
+				{...rest}
+			>
 				{children}
 			</Sc.FluidContainer>
 		);
 	}
 
 	return (
-		<Sc.Container className={classes} {...rest}>
+		<Sc.Container sx={sx} $fixedNav={fixedNav} className={classes} {...rest}>
 			{children}
 		</Sc.Container>
 	);
