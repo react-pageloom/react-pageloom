@@ -8,7 +8,6 @@ import {
 	PageWrapper,
 	Container,
 } from 'react-pageloom';
-
 function App() {
 	return (
 		<PageWrapper>

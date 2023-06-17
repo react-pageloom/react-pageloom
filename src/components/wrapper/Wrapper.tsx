@@ -7,12 +7,15 @@ import {
 	forwardRef,
 	isValidElement,
 	ReactElement,
+	useRef,
+	useState,
 } from 'react';
 import { animateScroll, Link } from 'react-scroll';
-import { ThemeUICSSObject } from 'theme-ui';
+import { Box, Button, ThemeUICSSObject } from 'theme-ui';
 import { JSX } from 'theme-ui/jsx-runtime';
 import { classNames } from '@src/utils/classNames';
 import { PageBlock } from '../block';
+import { PageDrawer } from '../drawer';
 import { PageHeader } from '../header';
 import {
 	Nav,
@@ -68,6 +71,8 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 		let footer: React.ReactElement | null = null;
 		let logoElement: React.ReactElement | null = null;
 		const blocks: React.ReactElement[] = [];
+		const [drawerOpen, setDrawerOpen] = useState(false);
+		const buttonRef = useRef<HTMLButtonElement>(null);
 
 		const classes = classNames('loom-wrapper_root', className);
 
@@ -128,7 +133,6 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 		});
 
 		const enhancedHeader = header ? cloneElement(header, { blockLinks }) : null;
-
 		return (
 			<>
 				<Global styles={emotionReset} />
@@ -141,6 +145,22 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 				>
 					{fixedNav && (
 						<Nav $fixed={fixedNav} className="loom-header_nav">
+							<PageDrawer
+								drawerOpen={drawerOpen}
+								setDrawerOpen={setDrawerOpen}
+								buttonRef={buttonRef}
+							>
+								<NavLinksContainer
+									key={`loom-link-drawer`}
+									className="loom-header_nav-links"
+									sx={{
+										flexDirection: 'column',
+										paddingTop: '2rem',
+									}}
+								>
+									{blockLinks}
+								</NavLinksContainer>
+							</PageDrawer>
 							<NavLogoContainer
 								className="loom-header_nav-logo"
 								onClick={() => {
@@ -154,7 +174,40 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 								{logoElement}
 							</NavLogoContainer>
 							<NavLinksContainer className="loom-header_nav-links">
-								{blockLinks}
+								<Box
+									sx={{
+										display: ['none', 'none', 'none', 'block'],
+									}}
+								>
+									{blockLinks}
+								</Box>
+								<Button
+									variant="black"
+									sx={{
+										display: ['block', 'block', 'block', 'none'],
+									}}
+									onClick={() => {
+										setDrawerOpen(true);
+									}}
+									ref={buttonRef}
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										strokeWidth="2"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										className="feather feather-menu fea icon-md"
+									>
+										<line x1="3" y1="12" x2="21" y2="12" children="" />
+										<line x1={3} y1={6} x2={21} y2={6} children="" />
+										<line x1="3" y1="18" x2="21" y2="18" children="" />
+									</svg>
+								</Button>
 							</NavLinksContainer>
 						</Nav>
 					)}
