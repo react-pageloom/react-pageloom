@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 import { BLACK, PRIMARY, WHITE } from '@src/constants/colors';
-import { NAVBAR_HEIGHT } from '@src/constants/sizes';
+import { MIN_HEIGHT, NAVBAR_HEIGHT, SCREEN_HEIGHT } from '@src/constants/sizes';
 
 export const Header = styled.header<{
 	$fixedNav: boolean;
 	$snap: boolean;
 }>`
 	width: 100%;
-	min-height: 100dvh;
+	min-height: max(${SCREEN_HEIGHT}, ${MIN_HEIGHT});
 	margin-left: auto;
 	margin-right: auto;
 	overflow: auto;
@@ -22,15 +22,18 @@ export const Header = styled.header<{
 
 	& > .loom-container_root {
 		margin-top: 1px;
-		height: calc(100dvh - ${NAVBAR_HEIGHT}px - 2px);
+		height: max(
+			calc(${SCREEN_HEIGHT} - ${NAVBAR_HEIGHT}px - 2px),
+			${MIN_HEIGHT}
+		);
 	}
 
 	${({ $fixedNav }) =>
 		$fixedNav &&
 		`
 		margin-top: ${NAVBAR_HEIGHT}px;
-		min-height: calc(100dvh - ${NAVBAR_HEIGHT}px);
-		max-height: calc(100dvh - ${NAVBAR_HEIGHT}px);
+		min-height: calc(${SCREEN_HEIGHT} - ${NAVBAR_HEIGHT}px);
+		max-height: calc(${SCREEN_HEIGHT} - ${NAVBAR_HEIGHT}px);
 
 		`}
 `;

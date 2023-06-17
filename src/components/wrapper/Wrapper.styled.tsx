@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
+import { SCREEN_HEIGHT } from '@src/constants/sizes';
 
 export const Wrapper = styled.div<{
 	$snapScroll: boolean;
 }>`
 	width: 100%;
-	min-height: 100dvh;
+	min-height: ${SCREEN_HEIGHT};
 	margin: 0;
 	padding: 0;
 	overflow: auto;
@@ -15,7 +16,7 @@ export const Wrapper = styled.div<{
 		`
 		scroll-snap-type: y mandatory;
 		scroll-behavior: smooth;
-		height: 100dvh;
+		height: ${SCREEN_HEIGHT};
 	`}
 `;
 

@@ -131,7 +131,7 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 
 		return (
 			<>
-				<Global styles={emotionReset} />
+				<Global styles={{ ...emotionReset, boxSizing: 'border-box' }} />
 				<Wrapper
 					id="loom-wrapper"
 					className={classes}
