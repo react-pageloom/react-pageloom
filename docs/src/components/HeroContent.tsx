@@ -8,13 +8,30 @@ function HeroContent() {
 			sx={{
 				gap: '1rem',
 				justifyContent: 'space-around',
-				backgroundColor: 'lightblue',
-				background: 'url(bg_image.svg)',
+				// backgroundColor: 'lightblue',
+				// background: 'url(bg_image.svg)',
 				backgroundSize: 'cover',
 				backgroundPosition: 'center',
 				backgroundRepeat: 'no-repeat',
 			}}
 		>
+			<video
+				autoPlay
+				loop
+				muted
+				playsInline
+				style={{
+					position: 'absolute',
+					top: 0,
+					left: 0,
+					width: '100%',
+					height: '100%',
+					objectFit: 'cover',
+					zIndex: -1,
+				}}
+			>
+				<source src="public/videos/hero_video.mp4" type="video/mp4" />
+			</video>
 			<h1
 				style={{
 					textAlign: 'center',
