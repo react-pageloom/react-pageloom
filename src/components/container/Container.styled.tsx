@@ -1,21 +1,32 @@
 import styled from '@emotion/styled';
 import { SCREEN_LG, SCREEN_SM, SCREEN_XM } from '@src/constants/breakpoints';
-import { MIN_HEIGHT, SCREEN_HEIGHT } from '@src/constants/sizes';
+import { SCREEN_HEIGHT } from '@src/constants/sizes';
 import { COLUMN_WIDTH, GUTTER } from '@src/constants/spacing';
 
 export const FluidContainer = styled.div<{
 	$fixedNav: boolean;
+	$centered: boolean;
 }>`
 	margin-left: auto;
 	margin-right: auto;
 	width: 100%;
 
-	height: max(${SCREEN_HEIGHT}, ${MIN_HEIGHT});
 	box-sizing: border-box;
+	min-height: ${SCREEN_HEIGHT};
+
+	${({ $centered }) =>
+		$centered &&
+		`
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	`}
 `;
 
 export const Container = styled.div<{
 	$fixedNav: boolean;
+	$centered: boolean;
 }>`
 	width: 100%;
 	max-width: ${COLUMN_WIDTH * 4 + GUTTER * 2 * 3}px;
@@ -35,6 +46,15 @@ export const Container = styled.div<{
 		max-width: 100%;
 	}
 
-	height: max(${SCREEN_HEIGHT}, ${MIN_HEIGHT});
 	box-sizing: border-box;
+	min-height: ${SCREEN_HEIGHT};
+
+	${({ $centered }) =>
+		$centered &&
+		`
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	`}
 `;

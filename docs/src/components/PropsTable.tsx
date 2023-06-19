@@ -9,6 +9,7 @@ import {
 import styled from 'styled-components';
 import { useMemo } from 'react';
 import { Container } from 'react-pageloom';
+import { Strong } from './HowToUseBlock';
 
 const StyledTable = styled.table`
 	border-spacing: 0;
@@ -30,9 +31,10 @@ const StyledTable = styled.table`
 	td {
 		margin: 0;
 		padding: 1rem;
-		border-bottom: 1px solid #dcdcdc;
-		border-right: 1px solid #dcdcdc;
-		background: #606c5d;
+		border-bottom: 1px solid #333;
+		border-right: 1px solid #333;
+		background: #ffeebb;
+		color: #000;
 
 		:last-child {
 			border-right: 0;
@@ -43,32 +45,86 @@ const StyledTable = styled.table`
 		background: #efefef;
 		border-bottom: 2px solid #dcdcdc;
 		color: #555;
+		font-weight: 700;
 	}
 `;
 
+const StyledContainer = styled(Container)`
+	padding: 2rem;
+`;
+
+const Title = styled.h1`
+	margin-bottom: 1rem;
+	text-align: center;
+	color: #333;
+	font-size: 2.5rem;
+`;
+
+const Description = styled.p`
+	margin-bottom: 2rem;
+	text-align: center;
+	color: #666;
+	font-size: 1.2rem;
+`;
+
+const ExamplesBlock = styled.div`
+	margin-top: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #ffeebb;
+	padding: 1rem;
+`;
+
+const Examples = styled.h2`
+	color: #333;
+	font-size: 2rem;
+	margin-bottom: 1rem;
+`;
+
+const ExampleText = styled.p`
+	font-size: 1.2rem;
+	margin-bottom: 0.5rem;
+	color: #000;
+	border-bottom: 1px solid #000;
+`;
+
 interface IData {
-	prop: string;
-	description: string;
-	component: string;
+	prop: React.ReactElement;
+	description: string | React.ReactElement;
+	component: React.ReactElement;
 }
 
 function PropsTable() {
 	const data = useMemo<IData[]>(
 		() => [
 			{
-				prop: 'sx',
-				description: 'custom styles for the block',
-				component: 'All',
+				prop: <Strong>sx</Strong>,
+				description: (
+					<span>
+						custom styles for the components. See the{' '}
+						<a href="https://theme-ui.com/sx-prop" target="_blank">
+							Theme UI sx prop
+						</a>{' '}
+						for more information.
+					</span>
+				),
+				component: <Strong>All</Strong>,
 			},
 			{
-				prop: 'fixedNav',
-				description: 'use fixed navigation',
-				component: 'PageWrapper',
+				prop: <Strong>fixedNav</Strong>,
+				description: 'fixes the nav to the top of the page on scroll',
+				component: <Strong>PageWrapper</Strong>,
 			},
 			{
-				prop: 'snapScroll',
-				description: 'use snap scrolling',
-				component: 'PageWrapper',
+				prop: <Strong>snapScroll</Strong>,
+				description: 'snaps the page to the top of the screen on scroll',
+				component: <Strong>PageWrapper</Strong>,
+			},
+			{
+				prop: <Strong>centered</Strong>,
+				description: 'center the content',
+				component: <Strong>Container</Strong>,
 			},
 		],
 		[]
@@ -96,38 +152,66 @@ function PropsTable() {
 		useTable<IData>({ columns, data }) as TableInstance<IData>;
 
 	return (
-		<Container
+		<StyledContainer
+			centered
 			sx={{
-				display: 'flex',
-				flexDirection: 'column',
-				alignItems: 'center',
 				justifyContent: 'space-around',
 			}}
 		>
-			<StyledTable {...getTableProps()}>
-				<thead>
-					{headerGroups.map((headerGroup: HeaderGroup<IData>) => (
-						<tr {...headerGroup.getHeaderGroupProps()}>
-							{headerGroup.headers.map((column: Column<IData>) => (
-								<th {...column.getHeaderProps()}>{column.render('Header')}</th>
-							))}
-						</tr>
-					))}
-				</thead>
-				<tbody {...getTableBodyProps()}>
-					{rows.map((row: Row<IData>) => {
-						prepareRow(row);
-						return (
-							<tr {...row.getRowProps()}>
-								{row.cells.map((cell: Cell<IData>) => (
-									<td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+			<div>
+				<Title>React Pageloom Props</Title>
+				<Description>
+					This table showcases the optional props that you can pass to the React
+					Pageloom components. Each prop is listed with a description, the
+					component(s) it can be used with, and an example usage.
+				</Description>
+
+				<StyledTable {...getTableProps()}>
+					<thead>
+						{headerGroups.map((headerGroup: HeaderGroup<IData>) => (
+							<tr {...headerGroup.getHeaderGroupProps()}>
+								{headerGroup.headers.map((column: Column<IData>) => (
+									<th {...column.getHeaderProps()}>
+										{column.render('Header')}
+									</th>
 								))}
 							</tr>
-						);
-					})}
-				</tbody>
-			</StyledTable>
-		</Container>
+						))}
+					</thead>
+					<tbody {...getTableBodyProps()}>
+						{rows.map((row: Row<IData>) => {
+							prepareRow(row);
+							return (
+								<tr {...row.getRowProps()}>
+									{row.cells.map((cell: Cell<IData>) => (
+										<td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+									))}
+								</tr>
+							);
+						})}
+					</tbody>
+				</StyledTable>
+				<ExamplesBlock>
+					<Examples>Examples:</Examples>
+					<ExampleText>
+						<Strong>sx:</Strong>
+						{'<PageWrapper sx={{ fontFamily: "sans-serif" }} />'}
+					</ExampleText>
+					<ExampleText>
+						<Strong>fixedNav:</Strong> {'<PageWrapper fixedNav />'}
+					</ExampleText>
+					<ExampleText>
+						<Strong>snapScroll:</Strong> {'<PageWrapper snapScroll />'}
+					</ExampleText>
+					<ExampleText>
+						<Strong>centered:</Strong> {'<Container centered />'}
+					</ExampleText>
+				</ExamplesBlock>
+			</div>
+			<h2>
+				Another <code>PageBlock</code> component
+			</h2>
+		</StyledContainer>
 	);
 }
 

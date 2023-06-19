@@ -1,14 +1,11 @@
-import React from 'react';
 import { Container } from 'react-pageloom';
 
 function HeroContent() {
 	return (
 		<Container
 			fluid
+			centered
 			sx={{
-				display: 'flex',
-				flexDirection: 'column',
-				alignItems: 'center',
 				gap: '1rem',
 				justifyContent: 'space-around',
 				backgroundColor: 'lightblue',

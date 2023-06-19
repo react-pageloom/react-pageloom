@@ -16,6 +16,12 @@ export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 	 * @default false
 	 */
 	fixedNav?: boolean;
+	/**
+	 * If true, the content will be centered on the page.
+	 *
+	 * @default true
+	 */
+	centered: boolean;
 	sx?: ThemeUICSSObject;
 }
 
@@ -33,12 +39,14 @@ export const Container = ({
 	className,
 	children,
 	fixedNav = false,
+	centered = true,
 	sx,
 	...rest
 }: ContainerProps) => {
 	const classes = classNames(
 		'loom-container_root',
 		fluid ? 'loom-container_fluid' : '',
+		centered ? 'loom-container_centered' : '',
 		className,
 	);
 
@@ -47,6 +55,7 @@ export const Container = ({
 			<Sc.FluidContainer
 				sx={sx}
 				$fixedNav={fixedNav}
+				$centered={centered}
 				className={classes}
 				{...rest}
 			>
@@ -56,7 +65,13 @@ export const Container = ({
 	}
 
 	return (
-		<Sc.Container sx={sx} $fixedNav={fixedNav} className={classes} {...rest}>
+		<Sc.Container
+			sx={sx}
+			$fixedNav={fixedNav}
+			$centered={centered}
+			className={classes}
+			{...rest}
+		>
 			{children}
 		</Sc.Container>
 	);

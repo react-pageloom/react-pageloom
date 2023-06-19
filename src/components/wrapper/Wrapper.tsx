@@ -13,7 +13,7 @@ import { ThemeUICSSObject } from 'theme-ui';
 import { JSX } from 'theme-ui/jsx-runtime';
 import { classNames } from '@src/utils/classNames';
 import { PageBlock } from '../block';
-import { PageHeader } from '../header';
+import { PageHeader, PageMobileNav } from '../header';
 import {
 	Nav,
 	NavLinksContainer,
@@ -140,7 +140,7 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 					{...rest}
 				>
 					{fixedNav && (
-						<Nav $fixed={fixedNav} className="loom-header_nav">
+						<Nav $fixed={fixedNav} id="loom-header_nav">
 							<NavLogoContainer
 								className="loom-header_nav-logo"
 								onClick={() => {
@@ -156,6 +156,7 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 							<NavLinksContainer className="loom-header_nav-links">
 								{blockLinks}
 							</NavLinksContainer>
+							<PageMobileNav blockLinks={blockLinks} />
 						</Nav>
 					)}
 					{enhancedHeader}
