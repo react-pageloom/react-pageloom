@@ -32,13 +32,14 @@ export interface BlockProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * TODO: Add description
+ * `PageBlock` component represents a section of your page. Each block should have a unique `id`, which can be used for navigation. You can optionally provide a `label` for the block. The `snap` prop enables snapping when scrolling, and `fixedNav` adjusts the block to account for a fixed navigation bar.
  *
  * @example
- * <Block id="about" label="About">
- *   <!-- your content here -->
- * </Block>
+ * <PageBlock id="about" label="About Us">
+ *   <!-- Your content here -->
+ * </PageBlock>
  */
+
 export const PageBlock = forwardRef<HTMLDivElement, BlockProps>(
 	(
 		{

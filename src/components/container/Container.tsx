@@ -26,7 +26,7 @@ export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * The fundamental building block that centers your content horizontally.
+ * The fundamental building block that centers your content horizontally inside the blocks. It is used to provide a consistent look and feel across the page.
  * It creates a simple `div` to wrap your content and align within a given viewport.
  *
  * @example

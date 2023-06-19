@@ -21,13 +21,14 @@ export interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * TODO: Add description
+ * `PageFooter` component represents the footer section of your page. Does not take entire viewport height. Not recommended for use with `Container` component.
  *
  * @example
- * <Footer>
- *   <!-- your content here -->
- * </Footer>
+ * <PageFooter>
+ *   <!-- Your footer content here -->
+ * </PageFooter>
  */
+
 export const PageFooter = forwardRef<HTMLDivElement, FooterProps>(
 	(
 		{ className, children, fixedNav = false, snap = false, ...rest },
@@ -36,13 +37,12 @@ export const PageFooter = forwardRef<HTMLDivElement, FooterProps>(
 		const classes = classNames('loom-footer_root', className);
 
 		return (
-			// @ts-ignore
 			<Footer
 				className={classes}
 				$fixedNav={fixedNav}
 				$snap={snap}
-				{...rest}
 				ref={ref}
+				{...rest}
 			>
 				{children}
 			</Footer>

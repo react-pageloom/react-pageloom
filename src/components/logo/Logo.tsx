@@ -21,7 +21,7 @@ export const HeaderLogo = forwardRef<HTMLDivElement, LogoProps>(
 		const classes = classNames('loom-logo_root', className);
 
 		return (
-			<Logo className={classes} {...rest} ref={ref}>
+			<Logo className={classes} ref={ref} {...rest}>
 				{children}
 			</Logo>
 		);
