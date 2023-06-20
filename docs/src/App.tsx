@@ -9,19 +9,23 @@ import PropsTable from './components/PropsTable';
 import HowToUseBlock from './components/HowToUseBlock';
 import HeroContent from './components/HeroContent';
 import Footer from './components/Footer';
+import { ReactLogoText } from './components/Logo';
 
 function App() {
 	return (
 		<PageWrapper fixedNav>
 			<PageHeader>
-				<HeaderLogo>PageLoom</HeaderLogo>
+				<HeaderLogo>
+					<ReactLogoText />
+					PageLoom
+				</HeaderLogo>
 				<HeroContent />
 			</PageHeader>
 			<PageBlock
 				id="how-to-use"
 				label="How to use?"
 				sx={{
-					backgroundColor: '#9AC5F4',
+					backgroundColor: '#1D267D',
 				}}
 			>
 				<HowToUseBlock />
@@ -30,7 +34,7 @@ function App() {
 				id="optional-props"
 				label="Props"
 				sx={{
-					backgroundColor: '#99DBF5',
+					backgroundColor: '#1D267D',
 				}}
 			>
 				<PropsTable />

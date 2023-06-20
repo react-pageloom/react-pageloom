@@ -17,7 +17,6 @@ const StyledTable = styled.table`
 	margin: 0 auto;
 	border-radius: 4px;
 	overflow: hidden;
-	box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
 
 	tr {
 		:last-child {
@@ -31,10 +30,8 @@ const StyledTable = styled.table`
 	td {
 		margin: 0;
 		padding: 1rem;
-		border-bottom: 1px solid #333;
-		border-right: 1px solid #333;
-		background: #ffeebb;
-		color: #000;
+		border-bottom: 1px solid #fff;
+		color: #fff;
 
 		:last-child {
 			border-right: 0;
@@ -56,14 +53,14 @@ const StyledContainer = styled(Container)`
 const Title = styled.h1`
 	margin-bottom: 1rem;
 	text-align: center;
-	color: #333;
+	color: #fff;
 	font-size: 2.5rem;
 `;
 
 const Description = styled.p`
 	margin-bottom: 2rem;
 	text-align: center;
-	color: #666;
+	color: #fff;
 	font-size: 1.2rem;
 `;
 
@@ -72,12 +69,12 @@ const ExamplesBlock = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: #ffeebb;
+	background-color: #1d267d;
 	padding: 1rem;
 `;
 
 const Examples = styled.h2`
-	color: #333;
+	color: #fff;
 	font-size: 2rem;
 	margin-bottom: 1rem;
 `;
@@ -85,7 +82,7 @@ const Examples = styled.h2`
 const ExampleText = styled.p`
 	font-size: 1.2rem;
 	margin-bottom: 0.5rem;
-	color: #000;
+	color: #fff;
 	border-bottom: 1px solid #000;
 `;
 

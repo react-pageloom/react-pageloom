@@ -5,27 +5,35 @@ import { styled } from 'styled-components';
 
 const DescriptionWrapper = styled.div`
 	width: 100%;
-	padding: 1em;
-	margin: 0;
-	background-color: #ffeebb;
+	padding: 2em;
 	box-sizing: border-box;
+	border-radius: 8px;
 `;
-
 const ComponentDescription = styled.div`
 	font-size: 1.2rem;
-	color: #000;
+	color: #fff;
 	margin: 1rem 0;
 	padding: 0.2em 0.4em;
-	border-bottom: 1px solid #000;
+	border-bottom: 1px solid #fff;
 `;
 
 export const Strong = styled.span`
 	font-weight: 600;
 	background-color: #fff;
 	color: #000;
-	border-radius: 0.25rem;
-	margin-right: 0.25rem;
-	padding: 0 0.25rem;
+	border-radius: 0.2rem;
+	margin-right: 0.2rem;
+	padding: 0 0.2rem;
+`;
+
+const FlexContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	gap: 1em;
+
+	@media (max-width: 1094px) {
+		flex-direction: column;
+	}
 `;
 
 function HowToUseBlock() {
@@ -41,22 +49,21 @@ function HowToUseBlock() {
 					style={{
 						textAlign: 'center',
 						fontSize: '2rem',
+						paddingBottom: '1rem',
 					}}
 				>
 					How to use?
 				</h1>
-				<div
-					style={{
-						width: '100%',
-						padding: '0',
-						margin: '0',
-					}}
-				>
-					<SyntaxHighlighter language="tsx" style={dark}>
-						{`
-import { HeaderLogo, PageBlock, PageHeader, 
-	PageFooter, PageWrapper, Container} from 'react-pageloom';
-				
+				<FlexContainer>
+					<div
+						style={{
+							width: '100%',
+							padding: '0',
+							margin: '0',
+						}}
+					>
+						<SyntaxHighlighter language="tsx" style={dark}>
+							{`
 <PageWrapper>
   <PageHeader>
     <HeaderLogo>Logo</HeaderLogo>
@@ -77,43 +84,44 @@ import { HeaderLogo, PageBlock, PageHeader,
   </PageFooter>
 </PageWrapper>
 `}
-					</SyntaxHighlighter>
-				</div>
-				<DescriptionWrapper>
-					<ComponentDescription>
-						<Strong>PageWrapper:</Strong> Serves as the parent component
-						encompassing the entire page.
-					</ComponentDescription>
+						</SyntaxHighlighter>
+					</div>
+					<DescriptionWrapper>
+						<ComponentDescription>
+							<Strong>PageWrapper:</Strong> Serves as the parent component
+							encompassing the entire page.
+						</ComponentDescription>
 
-					<ComponentDescription>
-						<Strong>PageHeader:</Strong> Designates the header section of the
-						page. Ideal for top-level navigation or introductory content.
-					</ComponentDescription>
+						<ComponentDescription>
+							<Strong>PageHeader:</Strong> Designates the header section of the
+							page. Ideal for top-level navigation or introductory content.
+						</ComponentDescription>
 
-					<ComponentDescription>
-						<Strong>PageBlock:</Strong> Represents a main content section of the
-						page. Utilize multiple <Strong>PageBlocks</Strong> to structure your
-						page content.
-					</ComponentDescription>
+						<ComponentDescription>
+							<Strong>PageBlock:</Strong> Represents a main content section of
+							the page. Utilize multiple <Strong>PageBlocks</Strong> to
+							structure your page content.
+						</ComponentDescription>
 
-					<ComponentDescription>
-						<Strong>PageFooter:</Strong> Specifies the footer section of the
-						page, perfect for secondary information or links.
-					</ComponentDescription>
+						<ComponentDescription>
+							<Strong>PageFooter:</Strong> Specifies the footer section of the
+							page, perfect for secondary information or links.
+						</ComponentDescription>
 
-					<ComponentDescription>
-						<Strong>Container (optional):</Strong> A versatile container for
-						content within <Strong>PageBlocks</Strong>,{' '}
-						<Strong>PageHeader</Strong>, or <Strong>PageFooter</Strong>. Use it
-						to center your content and ensure responsiveness.
-					</ComponentDescription>
+						<ComponentDescription>
+							<Strong>Container (optional):</Strong> A versatile container for
+							content within <Strong>PageBlocks</Strong>,{' '}
+							<Strong>PageHeader</Strong>, or <Strong>PageFooter</Strong>. Use
+							it to center your content and ensure responsiveness.
+						</ComponentDescription>
 
-					<ComponentDescription>
-						<Strong>HeaderLogo (optional):</Strong> Use this within the{' '}
-						<Strong>PageHeader</Strong>
-						to display your logo.
-					</ComponentDescription>
-				</DescriptionWrapper>
+						<ComponentDescription>
+							<Strong>HeaderLogo (optional):</Strong> Use this within the{' '}
+							<Strong>PageHeader</Strong>
+							to display your logo.
+						</ComponentDescription>
+					</DescriptionWrapper>
+				</FlexContainer>
 			</div>
 			<h2>
 				This is a <code>PageBlock</code> component
