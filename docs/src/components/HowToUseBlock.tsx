@@ -6,9 +6,8 @@ import { WHITE } from '../constants';
 
 const DescriptionWrapper = styled.div`
 	width: 100%;
-	padding: 2em;
+	margin: 1em 0;
 	box-sizing: border-box;
-	border-radius: 8px;
 `;
 const ComponentDescription = styled.div`
 	font-size: 1rem;
@@ -21,12 +20,17 @@ const ComponentDescription = styled.div`
 export const Strong = styled.span`
 	font-weight: 600;
 	background-color: ${WHITE};
-	color: #000;
+	color: rgb(17, 27, 39);
 	border-radius: 0.2rem;
 	margin-right: 0.2rem;
 	padding: 0 0.2rem;
 	padding: 0.2em 0.4em;
 	text-align: center;
+`;
+
+export const StrongBlack = styled(Strong)`
+	background-color: rgb(17, 27, 39);
+	color: ${WHITE};
 `;
 
 const FlexContainer = styled.div`
@@ -101,8 +105,8 @@ function HowToUseBlock() {
 
 						<ComponentDescription>
 							<Strong>PageBlock:</Strong> Represents a main content section of
-							the page. Utilize multiple <Strong>PageBlocks</Strong> to
-							structure your page content.
+							the page. Utilize multiple <StrongBlack>PageBlocks</StrongBlack>{' '}
+							to structure your page content.
 						</ComponentDescription>
 
 						<ComponentDescription>
@@ -112,14 +116,15 @@ function HowToUseBlock() {
 
 						<ComponentDescription>
 							<Strong>Container (optional):</Strong> A versatile container for
-							content within <Strong>PageBlocks</Strong>,{' '}
-							<Strong>PageHeader</Strong>, or <Strong>PageFooter</Strong>. Use
-							it to center your content and ensure responsiveness.
+							content within <StrongBlack>PageBlocks</StrongBlack>,{' '}
+							<StrongBlack>PageHeader</StrongBlack>, or{' '}
+							<StrongBlack>PageFooter</StrongBlack>. Use it to center your
+							content and ensure responsiveness.
 						</ComponentDescription>
 
 						<ComponentDescription>
 							<Strong>HeaderLogo (optional):</Strong> Use this within the{' '}
-							<Strong>PageHeader</Strong>
+							<StrongBlack>PageHeader</StrongBlack>
 							to display your logo.
 						</ComponentDescription>
 					</DescriptionWrapper>

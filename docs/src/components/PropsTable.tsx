@@ -11,7 +11,7 @@ import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styled from 'styled-components';
 import { useMemo } from 'react';
 import { Container } from 'react-pageloom';
-import { Strong } from './HowToUseBlock';
+import { Strong, StrongBlack } from './HowToUseBlock';
 import { WHITE } from '../constants';
 
 const StyledTable = styled.table`
@@ -43,9 +43,9 @@ const StyledTable = styled.table`
 	}
 
 	th {
-		background: #efefef;
+		background: ${WHITE};
 		border-bottom: 2px solid #dcdcdc;
-		color: #555;
+		color: rgb(17, 27, 39);
 		font-weight: 700;
 	}
 `;
@@ -69,14 +69,18 @@ const Description = styled.p`
 `;
 
 const ExamplesBlock = styled.div`
-	margin-top: 2rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	background-color: #1d267d;
+	width: fit-content;
+	justify-content: center;
+	margin: 2rem auto;
 	padding: 1rem;
 	text-align: center;
 	border: 1px solid ${WHITE};
+	overflow: hidden;
+	width: 80%;
 `;
 
 const Examples = styled.h2`
@@ -117,22 +121,27 @@ function PropsTable() {
 						for more information.
 					</span>
 				),
-				component: <Strong>All</Strong>,
+				component: <StrongBlack>All</StrongBlack>,
 			},
 			{
 				prop: <Strong>fixedNav</Strong>,
 				description: 'fixes the nav to the top of the page on scroll',
-				component: <Strong>PageWrapper</Strong>,
+				component: <StrongBlack>PageWrapper</StrongBlack>,
 			},
 			{
 				prop: <Strong>snapScroll</Strong>,
-				description: 'snaps the page to the top of the screen on scroll',
-				component: <Strong>PageWrapper</Strong>,
+				description: (
+					<span>
+						snaps the page to the top of the screen on scroll <br /> (does not
+						work with block height larger than viewport)
+					</span>
+				),
+				component: <StrongBlack>PageWrapper</StrongBlack>,
 			},
 			{
 				prop: <Strong>centered</Strong>,
 				description: 'center the content',
-				component: <Strong>Container</Strong>,
+				component: <StrongBlack>Container</StrongBlack>,
 			},
 		],
 		[]
@@ -167,7 +176,7 @@ function PropsTable() {
 			}}
 		>
 			<div>
-				<Title>React Pageloom Props</Title>
+				<Title>Props</Title>
 				<Description>
 					This table showcases the optional props that you can pass to the React
 					Pageloom components. Each prop is listed with a description, the
@@ -204,7 +213,7 @@ function PropsTable() {
 					<ExampleText>
 						<Strong>sx:</Strong>
 						<SyntaxHighlighter language="tsx" style={coldarkDark}>
-							{`<PageWrapper sx={{ backgroundColor: 'red' }}>`}
+							{`<PageWrapper sx={{ color: 'red' }}>`}
 						</SyntaxHighlighter>
 					</ExampleText>
 					<ExampleText>

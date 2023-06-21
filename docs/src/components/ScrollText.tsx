@@ -9,7 +9,7 @@ const crawlAnimation = keyframes`
   }
   100% {
     top: 0;
-		transform: rotateX(25deg) translateZ(-100px);
+		transform: rotateX(0) translateZ(-100px);
   }
 `;
 

@@ -1,6 +1,12 @@
 import { Container } from 'react-pageloom';
 import ScrollText from './ScrollText';
 import Logo from './Logo';
+import { styled } from 'styled-components';
+
+const LightFont = styled.span`
+	font-weight: 300;
+	font-size: 1.5rem;
+`;
 
 function HeroContent() {
 	return (
@@ -45,7 +51,9 @@ function HeroContent() {
 					<br />
 					<br />
 					<br />
-					This is a <code>PageHeader</code> component
+					<LightFont>
+						This is a <code>PageHeader</code> component
+					</LightFont>
 				</h2>
 			</ScrollText>
 		</Container>

@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import { useMemo } from 'react';
 import { Container } from 'react-pageloom';
 import { WHITE } from '../constants';
+import { StrongBlack } from './HowToUseBlock';
 
 const StyledTable = styled.table`
 	border-spacing: 0;
@@ -34,7 +35,7 @@ const StyledTable = styled.table`
 		margin: 0;
 		padding: 1rem;
 		border-bottom: 1px solid #1d267d;
-		color: #000;
+		color: rgb(17, 27, 39);
 
 		:last-child {
 			border-right: 0;
@@ -42,9 +43,9 @@ const StyledTable = styled.table`
 	}
 
 	th {
-		background: #efefef;
-		border-bottom: 2px solid #dcdcdc;
-		color: #555;
+		background: ${WHITE};
+		border-bottom: 2px solid rgb(17, 27, 39);
+		color: rgb(17, 27, 39);
 		font-weight: 700;
 	}
 `;
@@ -65,6 +66,7 @@ const Description = styled.p`
 	text-align: center;
 	color: ${WHITE};
 	font-size: 1.2rem;
+	line-height: 1.5;
 `;
 
 export const Anchor = styled.a`
@@ -73,21 +75,12 @@ export const Anchor = styled.a`
 	font-weight: 700;
 `;
 
-const Strong = styled.span`
-	box-sizing: border-box;
-	font-weight: 600;
-	background-color: #000;
-	color: ${WHITE};
-	border-radius: 0.2rem;
-	text-align: center;
-`;
-
 const Paragraph = styled.p`
 	line-height: 1.5;
 `;
 
 interface IData {
-	globalClass: string;
+	globalClass: string | React.ReactElement;
 	description: string | React.ReactElement;
 }
 
@@ -98,8 +91,8 @@ function ClassListTable() {
 				globalClass: '#loom-wrapper',
 				description: (
 					<Paragraph>
-						Styles applied to the root element of the <Strong>Wrapper</Strong>{' '}
-						component.
+						Styles applied to the root element of the{' '}
+						<StrongBlack>Wrapper</StrongBlack> component.
 					</Paragraph>
 				),
 			},
@@ -107,8 +100,8 @@ function ClassListTable() {
 				globalClass: '.loom-block_root',
 				description: (
 					<Paragraph>
-						Styles applied to the root element of the <Strong>Block</Strong>{' '}
-						component.
+						Styles applied to the root element of the{' '}
+						<StrongBlack>Block</StrongBlack> component.
 					</Paragraph>
 				),
 			},
@@ -116,8 +109,8 @@ function ClassListTable() {
 				globalClass: '.loom-container_root',
 				description: (
 					<Paragraph>
-						Styles applied to the root element of the <Strong>Container</Strong>{' '}
-						component.
+						Styles applied to the root element of the{' '}
+						<StrongBlack>Container</StrongBlack> component.
 					</Paragraph>
 				),
 			},
@@ -125,9 +118,10 @@ function ClassListTable() {
 				globalClass: '.loom-container_fluid',
 				description: (
 					<Paragraph>
-						Styles applied to the root element of the <Strong>Container</Strong>{' '}
-						component when the <Strong>fluid</Strong> prop is set to{' '}
-						<Strong>true</Strong>.
+						Styles applied to the root element of the{' '}
+						<StrongBlack>Container</StrongBlack> component when the{' '}
+						<StrongBlack>fluid</StrongBlack> prop is set to{' '}
+						<StrongBlack>true</StrongBlack>.
 					</Paragraph>
 				),
 			},
@@ -135,9 +129,10 @@ function ClassListTable() {
 				globalClass: '.loom-container_centered',
 				description: (
 					<Paragraph>
-						Styles applied to the root element of the <Strong>Container</Strong>{' '}
-						component when the <Strong>centered</Strong> prop is set to{' '}
-						<Strong>true</Strong>.
+						Styles applied to the root element of the{' '}
+						<StrongBlack>Container</StrongBlack> component when the{' '}
+						<StrongBlack>centered</StrongBlack> prop is set to{' '}
+						<StrongBlack>true</StrongBlack>.
 					</Paragraph>
 				),
 			},
@@ -145,8 +140,8 @@ function ClassListTable() {
 				globalClass: '.loom-footer_root',
 				description: (
 					<Paragraph>
-						Styles applied to the root element of the <Strong>Footer</Strong>{' '}
-						component.
+						Styles applied to the root element of the{' '}
+						<StrongBlack>Footer</StrongBlack> component.
 					</Paragraph>
 				),
 			},
@@ -154,8 +149,8 @@ function ClassListTable() {
 				globalClass: '.loom-header_root',
 				description: (
 					<Paragraph>
-						Styles applied to the root element of the <Strong>Header</Strong>{' '}
-						component.
+						Styles applied to the root element of the{' '}
+						<StrongBlack>Header</StrongBlack> component.
 					</Paragraph>
 				),
 			},
@@ -164,7 +159,7 @@ function ClassListTable() {
 				description: (
 					<Paragraph>
 						Styles applied to the root element of the{' '}
-						<Strong>Navigation</Strong> component.
+						<StrongBlack>Navigation</StrongBlack> component.
 					</Paragraph>
 				),
 			},
@@ -173,7 +168,7 @@ function ClassListTable() {
 				description: (
 					<Paragraph>
 						Styles applied to the navigation links of the{' '}
-						<Strong>Navigation</Strong> component.
+						<StrongBlack>Navigation</StrongBlack> component.
 					</Paragraph>
 				),
 			},
@@ -182,7 +177,7 @@ function ClassListTable() {
 				description: (
 					<Paragraph>
 						Styles applied to the navigation logo of the{' '}
-						<Strong>Navigation</Strong> component.
+						<StrongBlack>Navigation</StrongBlack> component.
 					</Paragraph>
 				),
 			},
@@ -216,8 +211,8 @@ function ClassListTable() {
 		>
 			<Title>CSS</Title>
 			<Description>
-				Using the <Strong>sx</Strong> prop or css file, you can style the
-				components however you want.
+				Using the <StrongBlack>sx</StrongBlack> prop or css file, you can style
+				the components however you want.
 			</Description>
 
 			<StyledTable {...getTableProps()}>
@@ -247,8 +242,12 @@ function ClassListTable() {
 					})}
 				</tbody>
 			</StyledTable>
-			<h2>
-				Another <code>PageBlock</code> component
+			<h2
+				style={{
+					marginTop: '2rem',
+				}}
+			>
+				And another <code>PageBlock</code> component
 			</h2>
 		</StyledContainer>
 	);
