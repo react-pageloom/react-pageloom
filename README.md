@@ -13,6 +13,10 @@ npm install react-pageloom
 yarn add react-pageloom
 ```
 
+## Example
+
+You can see an example of a web page created using React PageLoom [here](https://react-pageloom.github.io/react-pageloom/).
+
 ## Usage
 
 ```jsx
@@ -27,9 +31,9 @@ import {
 function App() {
   return (
     <PageWrapper>
-      <PageHeader>Header Content</PageHeader>
-      <PageBlock id="block1">Block 1 Content</PageBlock>
-      <PageBlock id="block2">Block 2 Content</PageBlock>
+      <PageHeader> -- Header Content -- </PageHeader>
+      <PageBlock id="block1" label="About me"> -- About Content -- </PageBlock>
+      <PageBlock id="block2" label="Projects"> -- Projects Content -- </PageBlock>
     </PageWrapper>
   );
 }
@@ -42,21 +46,17 @@ export default App;
 - Component-based: Create layouts using various building blocks like `HeaderLogo`, `PageBlock`, `PageHeader`, `PageWrapper`, and `Container`.
 - Smooth navigation: Integrated with `react-scroll` for an effortless scrolling experience.
 - Scroll locking: Automatically focus on one block at a time while scrolling.
-- Dynamic navigation bar: Updates based on the currently active block.
-- Customization: Each component supports the `sx` prop for easy styling and has custom classes that you can style with CSS.
+- Dynamic navigation bar: Navigation is automatically updated based on the currently active block and block components.
+- Customization: Each component supports the `sx` prop for easy styling and has custom classes that you can style with CSS. For all the classes check the documentation page.
 
 ## Components
 
-- `HeaderLogo`: Add to `PageHeader` to update the Logo for navbar.
-- `PageBlock`: Use it to create distinct sections on your page.
-- `PageHeader`: A special block that sits at the top of your page.
 - `PageWrapper`: The outermost wrapper for your page.
+- `PageHeader`: A special block that sits at the top of your page. Think of it as a Hero Page.
+- `HeaderLogo`: Add to `PageHeader` to update the Logo for navbar.
+- `PageBlock`: Use it to create distinct sections on your page. Each block occupies at least the height of your viewport.
 - `Container`: An optional component that can be used inside blocks for centering content and maintaining a fixed width.
 
-
-## Example
-
-You can see an example of a web page created using React PageLoom at [TBD](#).
 
 ## Contributing
 
