@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import { useMemo } from 'react';
 import { Container } from 'react-pageloom';
 import { WHITE } from '../constants';
-import { StrongBlack } from './HowToUseBlock';
+import { StrongBlack, Strong } from './HowToUseBlock';
 
 const StyledTable = styled.table`
 	border-spacing: 0;
@@ -18,7 +18,7 @@ const StyledTable = styled.table`
 	margin: 0 auto;
 	border-radius: 4px;
 	overflow: hidden;
-	background-color: ${WHITE};
+	background-color: #46458c;
 	max-height: 500px;
 	overflow-y: auto;
 
@@ -34,8 +34,8 @@ const StyledTable = styled.table`
 	td {
 		margin: 0;
 		padding: 1rem;
-		border-bottom: 1px solid #1d267d;
-		color: rgb(17, 27, 39);
+		border-bottom: 1px solid ${WHITE};
+		color: ${WHITE};
 
 		:last-child {
 			border-right: 0;
@@ -44,7 +44,7 @@ const StyledTable = styled.table`
 
 	th {
 		background: ${WHITE};
-		border-bottom: 2px solid rgb(17, 27, 39);
+		border-bottom: 2px solid ${WHITE};
 		color: rgb(17, 27, 39);
 		font-weight: 700;
 	}

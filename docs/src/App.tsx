@@ -42,7 +42,7 @@ function App() {
 				id="optional-props"
 				label="Props"
 				sx={{
-					backgroundColor: '#635ba0',
+					backgroundColor: '#46458C',
 				}}
 			>
 				<PropsTable />
@@ -51,7 +51,7 @@ function App() {
 				id="css-classes"
 				label="CSS Classes"
 				sx={{
-					backgroundColor: '#b8b1d4',
+					backgroundColor: '#1D267D',
 				}}
 			>
 				<ClassListTable />

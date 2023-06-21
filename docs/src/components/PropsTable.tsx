@@ -78,7 +78,7 @@ const ExamplesBlock = styled.div`
 	margin: 2rem auto;
 	padding: 1rem;
 	text-align: center;
-	border: 1px solid ${WHITE};
+	border-radius: 10px;
 	overflow: hidden;
 	width: 80%;
 `;
