@@ -1,15 +1,10 @@
 /** @jsxImportSource theme-ui */
 import { Children, forwardRef, isValidElement } from 'react';
-import { animateScroll } from 'react-scroll';
 import { ThemeUICSSObject } from 'theme-ui';
 import { classNames } from '@src/utils/classNames';
 import { HeaderLogo } from '../logo';
-import {
-	Header,
-	Nav,
-	NavLinksContainer,
-	NavLogoContainer,
-} from './Header.styled';
+import { PageNavigation } from '../navigation/Navigation';
+import { Header } from './Header.styled';
 
 export interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 	/**
@@ -39,13 +34,15 @@ export interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * TODO: Add description
+ * `PageHeader` component is a section at the top of the page. It can hold your site's logo and navigation links. The component supports block snapping and has an `sx` prop for custom styles. It can account for a fixed navigation bar if `fixedNav` prop is set to `true` in the `PageWrapper` component.
  *
  * @example
- * <Header>
+ * <PageHeader fixedNav={true}>
+ *   <HeaderLogo>MySite</HeaderLogo>
  *   <!-- your content here -->
- * </Header>
+ * </PageHeader>
  */
+
 export const PageHeader = forwardRef<HTMLDivElement, HeaderProps>(
 	(
 		{
@@ -59,6 +56,7 @@ export const PageHeader = forwardRef<HTMLDivElement, HeaderProps>(
 		ref,
 	): JSX.Element => {
 		const classes = classNames('loom-header_root', className);
+
 		let logoElement: React.ReactElement | null = null;
 		const childrenElements: React.ReactElement[] = [];
 
@@ -78,26 +76,15 @@ export const PageHeader = forwardRef<HTMLDivElement, HeaderProps>(
 				className={classes}
 				$snap={snap}
 				$fixedNav={fixedNav}
-				{...rest}
 				ref={ref}
+				{...rest}
 			>
 				{!fixedNav && (
-					<Nav $fixed={fixedNav} className="loom-header_nav">
-						<NavLogoContainer
-							className="loom-header_nav-logo"
-							onClick={() => {
-								animateScroll.scrollToTop({
-									duration: 500,
-									containerId: 'loom-wrapper',
-								});
-							}} // TODO: Add duration prop
-						>
-							{logoElement}
-						</NavLogoContainer>
-						<NavLinksContainer className="loom-header_nav-links">
-							{blockLinks}
-						</NavLinksContainer>
-					</Nav>
+					<PageNavigation
+						blockLinks={blockLinks}
+						fixedNav={fixedNav}
+						logoElement={logoElement}
+					/>
 				)}
 				{childrenElements}
 			</Header>

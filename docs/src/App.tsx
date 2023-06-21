@@ -8,19 +8,32 @@ import {
 import PropsTable from './components/PropsTable';
 import HowToUseBlock from './components/HowToUseBlock';
 import HeroContent from './components/HeroContent';
+import Footer from './components/Footer';
+import { ReactLogoText } from './components/Logo';
+import ClassListTable from './components/ClassListTable';
 
 function App() {
 	return (
-		<PageWrapper>
+		<PageWrapper fixedNav>
 			<PageHeader>
-				<HeaderLogo>PageLoom</HeaderLogo>
+				<HeaderLogo
+					sx={{
+						transition: 'all 0.2s ease-in-out',
+						'&:hover': {
+							filter: 'brightness(3)',
+						},
+					}}
+				>
+					<ReactLogoText />
+					PageLoom
+				</HeaderLogo>
 				<HeroContent />
 			</PageHeader>
 			<PageBlock
 				id="how-to-use"
 				label="How to use?"
 				sx={{
-					backgroundColor: 'tomato',
+					backgroundColor: '#1D267D',
 				}}
 			>
 				<HowToUseBlock />
@@ -29,15 +42,23 @@ function App() {
 				id="optional-props"
 				label="Props"
 				sx={{
-					backgroundColor: 'lightblue',
+					backgroundColor: '#46458C',
 				}}
 			>
 				<PropsTable />
 			</PageBlock>
+			<PageBlock
+				id="css-classes"
+				label="CSS Classes"
+				sx={{
+					backgroundColor: '#1D267D',
+				}}
+			>
+				<ClassListTable />
+			</PageBlock>
+
 			<PageFooter>
-				<h2>
-					This is a <code>PageFooter</code> component
-				</h2>
+				<Footer />
 			</PageFooter>
 		</PageWrapper>
 	);

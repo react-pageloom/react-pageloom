@@ -8,18 +8,14 @@ import {
 	isValidElement,
 	ReactElement,
 } from 'react';
-import { animateScroll, Link } from 'react-scroll';
+import { Link } from 'react-scroll';
 import { ThemeUICSSObject } from 'theme-ui';
 import { JSX } from 'theme-ui/jsx-runtime';
 import { classNames } from '@src/utils/classNames';
 import { PageBlock } from '../block';
 import { PageHeader } from '../header';
-import {
-	Nav,
-	NavLinksContainer,
-	NavLogoContainer,
-} from '../header/Header.styled';
 import { HeaderLogo } from '../logo';
+import { PageNavigation } from '../navigation/Navigation';
 import { BlockContainer, Wrapper } from './Wrapper.styled';
 
 export interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -45,13 +41,23 @@ export interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * TODO: Add description
+ * `PageWrapper` is a core container component used to wrap all other components in the library. It hosts `PageHeader`, `PageBlock`, and optionally `PageFooter` components. Supports snap scrolling, fixed navigation bar, and custom styles via `sx` prop.
  *
  * @example
- * <Wrapper>
- *   <!-- your content here -->
- * </Wrapper>
+ *
+ * <PageWrapper snapScroll fixedNav>
+ *  <PageHeader>
+ *    <HeaderLogo>Logo</HeaderLogo>
+ *  </PageHeader>
+ *  <PageBlock id="block-1" label="Block 1">
+ *    <!-- your content here -->
+ *  </PageBlock>
+ *  <PageFooter>
+ *    <!-- your content here -->
+ *  </PageFooter>
+ * </PageWrapper>
  */
+
 export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 	(
 		{
@@ -140,23 +146,12 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 					{...rest}
 				>
 					{fixedNav && (
-						<Nav $fixed={fixedNav} className="loom-header_nav">
-							<NavLogoContainer
-								className="loom-header_nav-logo"
-								onClick={() => {
-									animateScroll.scrollToTop({
-										duration,
-										...(snapScroll && { containerId: 'loom-wrapper' }),
-										to: 'loom-header',
-									});
-								}}
-							>
-								{logoElement}
-							</NavLogoContainer>
-							<NavLinksContainer className="loom-header_nav-links">
-								{blockLinks}
-							</NavLinksContainer>
-						</Nav>
+						<PageNavigation
+							blockLinks={blockLinks}
+							logoElement={logoElement}
+							snapScroll={snapScroll}
+							fixedNav={fixedNav}
+						/>
 					)}
 					{enhancedHeader}
 					<BlockContainer>{blocks}</BlockContainer>
