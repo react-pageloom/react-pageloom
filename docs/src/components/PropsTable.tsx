@@ -6,10 +6,13 @@ import {
 	Row,
 	TableInstance,
 } from 'react-table';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styled from 'styled-components';
 import { useMemo } from 'react';
 import { Container } from 'react-pageloom';
 import { Strong } from './HowToUseBlock';
+import { WHITE } from '../constants';
 
 const StyledTable = styled.table`
 	border-spacing: 0;
@@ -17,6 +20,7 @@ const StyledTable = styled.table`
 	margin: 0 auto;
 	border-radius: 4px;
 	overflow: hidden;
+	background-color: #1d267d;
 
 	tr {
 		:last-child {
@@ -30,8 +34,8 @@ const StyledTable = styled.table`
 	td {
 		margin: 0;
 		padding: 1rem;
-		border-bottom: 1px solid #fff;
-		color: #fff;
+		border-bottom: 1px solid ${WHITE};
+		color: ${WHITE};
 
 		:last-child {
 			border-right: 0;
@@ -53,14 +57,14 @@ const StyledContainer = styled(Container)`
 const Title = styled.h1`
 	margin-bottom: 1rem;
 	text-align: center;
-	color: #fff;
+	color: ${WHITE};
 	font-size: 2.5rem;
 `;
 
 const Description = styled.p`
 	margin-bottom: 2rem;
 	text-align: center;
-	color: #fff;
+	color: ${WHITE};
 	font-size: 1.2rem;
 `;
 
@@ -71,10 +75,12 @@ const ExamplesBlock = styled.div`
 	align-items: center;
 	background-color: #1d267d;
 	padding: 1rem;
+	text-align: center;
+	border: 1px solid ${WHITE};
 `;
 
 const Examples = styled.h2`
-	color: #fff;
+	color: ${WHITE};
 	font-size: 2rem;
 	margin-bottom: 1rem;
 `;
@@ -82,8 +88,13 @@ const Examples = styled.h2`
 const ExampleText = styled.p`
 	font-size: 1.2rem;
 	margin-bottom: 0.5rem;
-	color: #fff;
-	border-bottom: 1px solid #000;
+	color: ${WHITE};
+`;
+
+export const Anchor = styled.a`
+	color: ${WHITE};
+	text-decoration: none;
+	font-weight: 700;
 `;
 
 interface IData {
@@ -100,9 +111,9 @@ function PropsTable() {
 				description: (
 					<span>
 						custom styles for the components. See the{' '}
-						<a href="https://theme-ui.com/sx-prop" target="_blank">
+						<Anchor href="https://theme-ui.com/sx-prop" target="_blank">
 							Theme UI sx prop
-						</a>{' '}
+						</Anchor>{' '}
 						for more information.
 					</span>
 				),
@@ -192,16 +203,27 @@ function PropsTable() {
 					<Examples>Examples:</Examples>
 					<ExampleText>
 						<Strong>sx:</Strong>
-						{'<PageWrapper sx={{ fontFamily: "sans-serif" }} />'}
+						<SyntaxHighlighter language="tsx" style={coldarkDark}>
+							{`<PageWrapper sx={{ backgroundColor: 'red' }}>`}
+						</SyntaxHighlighter>
 					</ExampleText>
 					<ExampleText>
-						<Strong>fixedNav:</Strong> {'<PageWrapper fixedNav />'}
+						<Strong>fixedNav:</Strong>
+						<SyntaxHighlighter language="tsx" style={coldarkDark}>
+							{`<PageWrapper fixedNav>`}
+						</SyntaxHighlighter>
 					</ExampleText>
 					<ExampleText>
-						<Strong>snapScroll:</Strong> {'<PageWrapper snapScroll />'}
+						<Strong>snapScroll:</Strong>
+						<SyntaxHighlighter language="tsx" style={coldarkDark}>
+							{`<PageWrapper snapScroll>`}
+						</SyntaxHighlighter>
 					</ExampleText>
 					<ExampleText>
-						<Strong>centered:</Strong> {'<Container centered />'}
+						<Strong>centered:</Strong>
+						<SyntaxHighlighter language="tsx" style={coldarkDark}>
+							{`<Container centered>`}
+						</SyntaxHighlighter>
 					</ExampleText>
 				</ExamplesBlock>
 			</div>

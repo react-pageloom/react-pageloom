@@ -1,7 +1,8 @@
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Container } from 'react-pageloom';
 import { styled } from 'styled-components';
+import { WHITE } from '../constants';
 
 const DescriptionWrapper = styled.div`
 	width: 100%;
@@ -10,20 +11,22 @@ const DescriptionWrapper = styled.div`
 	border-radius: 8px;
 `;
 const ComponentDescription = styled.div`
-	font-size: 1.2rem;
-	color: #fff;
-	margin: 1rem 0;
+	font-size: 1rem;
+	color: ${WHITE};
 	padding: 0.2em 0.4em;
-	border-bottom: 1px solid #fff;
+	border-bottom: 1px solid ${WHITE};
+	line-height: 2;
 `;
 
 export const Strong = styled.span`
 	font-weight: 600;
-	background-color: #fff;
+	background-color: ${WHITE};
 	color: #000;
 	border-radius: 0.2rem;
 	margin-right: 0.2rem;
 	padding: 0 0.2rem;
+	padding: 0.2em 0.4em;
+	text-align: center;
 `;
 
 const FlexContainer = styled.div`
@@ -62,9 +65,8 @@ function HowToUseBlock() {
 							margin: '0',
 						}}
 					>
-						<SyntaxHighlighter language="tsx" style={dark}>
-							{`
-<PageWrapper>
+						<SyntaxHighlighter language="tsx" style={coldarkDark}>
+							{`<PageWrapper>
   <PageHeader>
     <HeaderLogo>Logo</HeaderLogo>
     <Container>

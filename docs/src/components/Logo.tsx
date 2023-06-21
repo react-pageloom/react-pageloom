@@ -1,7 +1,18 @@
-import React from 'react';
-import { styled } from 'styled-components';
+import PageLoomLogo from '../assets/pl_logo.png';
 
 function ReactLogo() {
+	return (
+		<img
+			src={PageLoomLogo}
+			alt="PageLoom Logo"
+			style={{
+				maxWidth: '500px',
+				aspectRatio: '1/1',
+				filter: 'invert(1)',
+			}}
+		/>
+	);
+
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -35,23 +46,105 @@ export function ReactLogoText() {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
-			width="50"
-			height="50"
-			viewBox="0 0 80 80"
 			fill="none"
+			viewBox="0.5 0 86.5 95"
+			style={{
+				width: '48px',
+				aspectRatio: '1 / 1',
+				marginRight: '8px',
+				filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
+			}}
 		>
 			<path
-				d="M31.4773 62L33.7955 15.4545H45.5L43.6591 52.5227H62.8636L62.3636 62H31.4773Z"
-				fill="#DD58D6"
+				fill-rule="evenodd"
+				clip-rule="evenodd"
+				d="M37 25.5H1V61L14.5 70.5H25.75H37C43.6667 67.8333 51.5 61 51.5 48C51.5 37 41.3333 26.5 37 25.5ZM16.5 61V37C25.75 37 37 37 37 48C37 61 25.75 61 16.5 61Z"
+				fill="url(#paint0_diamond_801_3041)"
 			/>
 			<path
-				d="M31.4773 62L30.4785 61.9503L30.4262 63H31.4773V62ZM33.7955 15.4545V14.4545H32.844L32.7967 15.4048L33.7955 15.4545ZM45.5 15.4545L46.4988 15.5041L46.5509 14.4545H45.5V15.4545ZM43.6591 52.5227L42.6603 52.4731L42.6082 53.5227H43.6591V52.5227ZM62.8636 52.5227L63.8622 52.5754L63.9178 51.5227H62.8636V52.5227ZM62.3636 62V63H63.3123L63.3622 62.0527L62.3636 62ZM32.476 62.0497L34.7942 15.5043L32.7967 15.4048L30.4785 61.9503L32.476 62.0497ZM33.7955 16.4545H45.5V14.4545H33.7955V16.4545ZM44.5012 15.4049L42.6603 52.4731L44.6579 52.5723L46.4988 15.5041L44.5012 15.4049ZM43.6591 53.5227H62.8636V51.5227H43.6591V53.5227ZM61.865 52.47L61.365 61.9473L63.3622 62.0527L63.8622 52.5754L61.865 52.47ZM62.3636 61H31.4773V63H62.3636V61Z"
-				fill="#DD58D6"
+				d="M14.5 70.5L1 61V94.5H14.5V70.5Z"
+				fill="url(#paint1_linear_801_3041)"
 			/>
 			<path
-				d="M2.47727 79L4.79545 32.4545H24.2955C27.7803 32.4545 30.7652 33.1364 33.25 34.5C35.75 35.8485 37.6364 37.7424 38.9091 40.1818C40.1818 42.6212 40.7349 45.4545 40.5682 48.6818C40.4167 51.9394 39.5682 54.7727 38.0227 57.1818C36.4773 59.5909 34.3636 61.4545 31.6818 62.7727C29 64.0909 25.8788 64.75 22.3182 64.75H10.4091L10.8636 55.5909H20.5455C22.1667 55.5909 23.5455 55.3106 24.6818 54.75C25.8333 54.1742 26.7273 53.3712 27.3636 52.3409C28 51.2955 28.3485 50.0758 28.4091 48.6818C28.4848 47.2727 28.2576 46.0606 27.7273 45.0455C27.197 44.0303 26.3864 43.25 25.2955 42.7045C24.2045 42.1439 22.8485 41.8636 21.2273 41.8636H16.0455L14.1818 79H2.47727Z"
-				fill="#40128B"
+				d="M14.5 70.5L1 61V94.5H14.5V70.5Z"
+				fill="#51359C"
+				fill-opacity="0.46"
 			/>
+			<path
+				d="M41 22C46.1137 22 57.107 25.7 60.1705 40.5C60.2074 37.9387 60.2219 34.649 60.2208 31C55.5974 14.6 45.4805 6.83333 41 5V22Z"
+				fill="url(#paint2_linear_801_3041)"
+			/>
+			<path
+				d="M60 0.5H41V5C45.4805 6.83333 55.5974 14.6 60.2208 31C60.2178 20.9984 60.0975 8.29792 60 0.5Z"
+				fill="url(#paint3_linear_801_3041)"
+			/>
+			<path
+				d="M37 25.5C41.3333 26.5 51.5 37 51.5 48C51.5 61 43.6667 67.8333 37 70.5H86.5V55H56.5C57.5 53.5 59.6 49.5 60 45.5C60.0807 44.6929 60.1356 42.9221 60.1705 40.5C57.107 25.7 46.1137 22 41 22V25.5H37Z"
+				fill="url(#paint4_linear_801_3041)"
+			/>
+			<path
+				d="M37 25.5H1V61M37 25.5C41.3333 26.5 51.5 37 51.5 48C51.5 61 43.6667 67.8333 37 70.5M37 25.5H41V22M37 70.5H86.5V55H56.5C57.5 53.5 59.6 49.5 60 45.5C60.0807 44.6929 60.1356 42.9221 60.1705 40.5M37 70.5H25.75H14.5M14.5 70.5L1 61M14.5 70.5V94.5H1V61M41 22C46.1137 22 57.107 25.7 60.1705 40.5M41 22V5M60.1705 40.5C60.2074 37.9387 60.2219 34.649 60.2208 31M41 5V0.5H60C60.0975 8.29792 60.2178 20.9984 60.2208 31M41 5C45.4805 6.83333 55.5974 14.6 60.2208 31M16.5 37V61C25.75 61 37 61 37 48C37 37 25.75 37 16.5 37Z"
+				stroke="black"
+			/>
+			<defs>
+				<radialGradient
+					id="paint0_diamond_801_3041"
+					cx="0"
+					cy="0"
+					r="1"
+					gradientUnits="userSpaceOnUse"
+					gradientTransform="translate(37.5 30) rotate(135) scale(83.4386 75.8936)"
+				>
+					<stop offset="0.0977753" stop-color="#5E81D5" />
+					<stop offset="0.395536" stop-color="#516CC6" />
+					<stop offset="0.65986" stop-color="#6C6FC7" />
+					<stop offset="1" stop-color="#5E81D5" stop-opacity="0" />
+				</radialGradient>
+				<linearGradient
+					id="paint1_linear_801_3041"
+					x1="43.75"
+					y1="0.5"
+					x2="43.75"
+					y2="94.5"
+					gradientUnits="userSpaceOnUse"
+				>
+					<stop offset="0.270938" stop-color="#100F55" />
+					<stop offset="1" stop-color="#080727" />
+				</linearGradient>
+				<linearGradient
+					id="paint2_linear_801_3041"
+					x1="13"
+					y1="6.5"
+					x2="75"
+					y2="59"
+					gradientUnits="userSpaceOnUse"
+				>
+					<stop stop-color="#6967DE" />
+					<stop offset="1" stop-color="#0A8DD2" />
+				</linearGradient>
+				<linearGradient
+					id="paint3_linear_801_3041"
+					x1="43.75"
+					y1="0.5"
+					x2="59"
+					y2="19"
+					gradientUnits="userSpaceOnUse"
+				>
+					<stop stop-color="#0C0128" />
+					<stop offset="1" stop-color="#033D86" />
+				</linearGradient>
+				<linearGradient
+					id="paint4_linear_801_3041"
+					x1="89.5"
+					y1="3"
+					x2="29"
+					y2="72"
+					gradientUnits="userSpaceOnUse"
+				>
+					<stop offset="0.0508141" stop-color="#00001F" />
+					<stop offset="1" stop-color="#4A3091" />
+				</linearGradient>
+			</defs>
 		</svg>
 	);
 }

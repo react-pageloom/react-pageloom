@@ -21,7 +21,7 @@ export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 	 *
 	 * @default true
 	 */
-	centered: boolean;
+	centered?: boolean;
 	sx?: ThemeUICSSObject;
 }
 

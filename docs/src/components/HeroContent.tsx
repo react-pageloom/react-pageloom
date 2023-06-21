@@ -6,7 +6,7 @@ function HeroContent() {
 	return (
 		<Container
 			fluid
-			centered
+			centered={false}
 			sx={{
 				gap: '1rem',
 				justifyContent: 'space-around',
