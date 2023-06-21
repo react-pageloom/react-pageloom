@@ -11,6 +11,7 @@ import { useMemo } from 'react';
 import { Container } from 'react-pageloom';
 import { WHITE } from '../constants';
 import { StrongBlack, Strong } from './HowToUseBlock';
+import { LightFont } from './HeroContent';
 
 const StyledTable = styled.table`
 	border-spacing: 0;
@@ -223,7 +224,7 @@ function ClassListTable() {
 				>
 					{headerGroups.map((headerGroup: HeaderGroup<IData>) => (
 						<tr {...headerGroup.getHeaderGroupProps()}>
-							{headerGroup.headers.map((column: Column<IData>) => (
+							{headerGroup.headers.map((column) => (
 								<th {...column.getHeaderProps()}>{column.render('Header')}</th>
 							))}
 						</tr>
@@ -242,13 +243,13 @@ function ClassListTable() {
 					})}
 				</tbody>
 			</StyledTable>
-			<h2
+			<LightFont
 				style={{
 					marginTop: '2rem',
 				}}
 			>
 				And another <code>PageBlock</code> component
-			</h2>
+			</LightFont>
 		</StyledContainer>
 	);
 }

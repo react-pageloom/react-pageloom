@@ -1235,6 +1235,11 @@
   resolved "https://registry.npmjs.org/@eslint/js/-/js-8.42.0.tgz"
   integrity sha512-6SWlXpWU5AvId8Ac7zjzmIOqMOba/JWY8XZ4A7q7Gn1Vlfg/SFFIlrtHXt9nPn4op9ZPAkl91Jao+QQv3r/ukw==
 
+"@fontsource/source-sans-pro@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@fontsource/source-sans-pro/-/source-sans-pro-5.0.3.tgz#7d6e84a8169ba12fa5e6ce70757aa2ca7e74d855"
+  integrity sha512-mQnjuif/37VxwRloHZ+wQdoozd2VPWutbFSt1AuSkk7nFXIBQxHJLw80rgCF/osL0t7N/3Gx1V7UJuOX2zxzhQ==
+
 "@humanwhocodes/config-array@^0.11.10":
   version "0.11.10"
   resolved "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.11.10.tgz"
@@ -1345,6 +1350,20 @@
   version "1.8.7"
   resolved "https://registry.yarnpkg.com/@types/react-scroll/-/react-scroll-1.8.7.tgz#7241c6ccd47839d79227a23a5184d727245c7324"
   integrity sha512-BB8g+hQL7OtBPWg/NcES6p5u6vduZonGl1BxrsGUwcefE53pfI0pFDd1lRFndgEUE6whYdFfhD+j0sZZT/6brQ==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-syntax-highlighter@^15.5.7":
+  version "15.5.7"
+  resolved "https://registry.yarnpkg.com/@types/react-syntax-highlighter/-/react-syntax-highlighter-15.5.7.tgz#bd29020ccb118543d88779848f99059b64b02d0f"
+  integrity sha512-bo5fEO5toQeyCp0zVHBeggclqf5SQ/Z5blfFmjwO5dkMVGPgmiwZsJh9nu/Bo5L7IHTuGWrja6LxJVE2uB5ZrQ==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-table@^7.7.14":
+  version "7.7.14"
+  resolved "https://registry.yarnpkg.com/@types/react-table/-/react-table-7.7.14.tgz#b880f1ae140ed065bca2e21b3008ca1ebe71595a"
+  integrity sha512-TYrv7onCiakaG1uAu/UpQ9FojNEt/4/ht87EgJQaEGFoWV606ZLWUZAcUHzMxgc3v1mywP1cDyz3qB4ho3hWOw==
   dependencies:
     "@types/react" "*"
 

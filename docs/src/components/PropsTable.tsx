@@ -13,6 +13,7 @@ import { useMemo } from 'react';
 import { Container } from 'react-pageloom';
 import { Strong, StrongBlack } from './HowToUseBlock';
 import { WHITE } from '../constants';
+import { LightFont } from './HeroContent';
 
 const StyledTable = styled.table`
 	border-spacing: 0;
@@ -78,9 +79,8 @@ const ExamplesBlock = styled.div`
 	margin: 2rem auto;
 	padding: 1rem;
 	text-align: center;
-	border-radius: 10px;
 	overflow: hidden;
-	width: 80%;
+	width: 75%;
 `;
 
 const Examples = styled.h2`
@@ -187,7 +187,7 @@ function PropsTable() {
 					<thead>
 						{headerGroups.map((headerGroup: HeaderGroup<IData>) => (
 							<tr {...headerGroup.getHeaderGroupProps()}>
-								{headerGroup.headers.map((column: Column<IData>) => (
+								{headerGroup.headers.map((column) => (
 									<th {...column.getHeaderProps()}>
 										{column.render('Header')}
 									</th>
@@ -236,9 +236,9 @@ function PropsTable() {
 					</ExampleText>
 				</ExamplesBlock>
 			</div>
-			<h2>
+			<LightFont>
 				Another <code>PageBlock</code> component
-			</h2>
+			</LightFont>
 		</StyledContainer>
 	);
 }

@@ -3,10 +3,11 @@ import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Container } from 'react-pageloom';
 import { styled } from 'styled-components';
 import { WHITE } from '../constants';
+import { LightFont } from './HeroContent';
 
 const DescriptionWrapper = styled.div`
-	width: 100%;
-	margin: 1em 0;
+	width: 90%;
+	margin: 0 auto;
 	box-sizing: border-box;
 `;
 const ComponentDescription = styled.div`
@@ -49,6 +50,7 @@ function HowToUseBlock() {
 			centered
 			sx={{
 				justifyContent: 'space-around',
+				padding: '2rem 0',
 			}}
 		>
 			<div>
@@ -77,12 +79,12 @@ function HowToUseBlock() {
       {/* Your content here */}
     </Container>
   </PageHeader>
-  <PageBlock id="block-1" label="Block 1">
+  <PageBlock id="block-1" label="About">
     <Container>
       {/* Your content here */}
     </Container>
   </PageBlock>
-  <PageBlock id="block-2" label="Block 2">
+  <PageBlock id="block-2" label="Location">
     {/* Your content here */}
   </PageBlock>
   <PageFooter>
@@ -130,9 +132,19 @@ function HowToUseBlock() {
 					</DescriptionWrapper>
 				</FlexContainer>
 			</div>
-			<h2>
+			<LightFont
+				style={{
+					textAlign: 'center',
+					margin: '2rem 0',
+				}}
+			>
+				Add as many <StrongBlack>PageBlocks</StrongBlack> as you need to. The
+				navigation will automatically update to reflect the blocks you have
+				added.
+			</LightFont>
+			<LightFont>
 				This is a <code>PageBlock</code> component
-			</h2>
+			</LightFont>
 		</Container>
 	);
 }

@@ -2,8 +2,9 @@ import { Container } from 'react-pageloom';
 import ScrollText from './ScrollText';
 import Logo from './Logo';
 import { styled } from 'styled-components';
+import { Strong } from './HowToUseBlock';
 
-const LightFont = styled.span`
+export const LightFont = styled.span`
 	font-weight: 300;
 	font-size: 1.5rem;
 `;
@@ -41,11 +42,17 @@ function HeroContent() {
 				<source src="public/videos/hero_video.mp4" type="video/mp4" />
 			</video>
 			<ScrollText title={<Logo />}>
-				<h1>
+				<h1
+					style={{
+						lineHeight: '1.5',
+						fontSize: '2rem',
+					}}
+				>
 					PageLoom is a powerful, flexible library for React.js that simplifies
 					the process of creating stunning, interactive webpage layouts. It
-					leverages the concept of "Blocks", providing an intuitive,
-					component-based system to build your application's user interface.
+					leverages the concept of <Strong>Blocks</Strong>, providing an
+					intuitive, component-based system to build your application's user
+					interface.
 				</h1>
 				<h2>
 					<br />
