@@ -1,12 +1,10 @@
 <!-- markdownlint-disable-next-line -->
 <p align="center">
-  <a href="https://https://react-pageloom.github.io/react-pageloom/" rel="noopener" target="_blank"><img width="150" src="/docs/src/assets/pl_logo.png" alt="react pageloom logo"></a>
+  <a href="https://react-pageloom.github.io/react-pageloom/" rel="noopener" target="_blank"><img width="150" src="/docs/src/assets/pl_logo.png" alt="react pageloom logo"></a>
 </p>
 
 <h1 align="center">React Pageloom</h1>
 
-
-# React PageLoom
 
 React PageLoom is a powerful and flexible library for creating stunning, interactive web page layouts with React.js. It provides a component-based system for building application interfaces, offering a unique and seamless way to enhance the user experience through dynamic navigation and visually appealing elements.
 
