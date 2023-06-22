@@ -38,6 +38,7 @@ import {
 	PageHeader,
 	PageWrapper,
 	Container,
+	PageFooter,
 } from 'react-pageloom';
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
       <PageHeader> -- Header Content -- </PageHeader>
       <PageBlock id="block1" label="About me"> -- About Content -- </PageBlock>
       <PageBlock id="block2" label="Projects"> -- Projects Content -- </PageBlock>
+      <PageFooter> -- Footer Content -- </PageFooter>
     </PageWrapper>
   );
 }
