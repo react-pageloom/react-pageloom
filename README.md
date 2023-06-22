@@ -10,10 +10,10 @@ React PageLoom is a powerful and flexible library for creating stunning, interac
 
 Each section, or "block", spans the entire viewport, effectively filling 100% of the screen's width and height. This approach simplifies the construction of immersive, one-page experiences where content is presented in distinct, full-screen sections that users can navigate through vertically.
 
-## Page layout
-
+## What do you get?
+Build the application by utilizing the following npm packages: `PageHeader`, `PageBlock`, and `PageFooter`. The navigation component will be automatically included.
 <p align="center">
-<img width="485" alt="image" src="https://github.com/react-pageloom/react-pageloom/assets/60644723/22484050-9b22-4ddb-b4fa-baa8aef5299c">
+<img width="250" alt="image" src="https://github.com/react-pageloom/react-pageloom/assets/60644723/22484050-9b22-4ddb-b4fa-baa8aef5299c">
 </p>
 
 ## Installation
