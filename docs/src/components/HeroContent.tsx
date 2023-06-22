@@ -6,7 +6,10 @@ import { Strong } from './HowToUseBlock';
 
 export const LightFont = styled.span`
 	font-weight: 300;
-	font-size: 1.5rem;
+	font-size: 1.2rem;
+	background-color: rgba(255, 255, 255, 0.2);
+	padding: 0.5rem;
+	line-height: 1.8;
 `;
 
 function HeroContent() {
@@ -17,8 +20,6 @@ function HeroContent() {
 			sx={{
 				gap: '1rem',
 				justifyContent: 'space-around',
-				// backgroundColor: 'lightblue',
-				// background: 'url(bg_image.svg)',
 				backgroundSize: 'cover',
 				backgroundPosition: 'center',
 				backgroundRepeat: 'no-repeat',
@@ -36,6 +37,7 @@ function HeroContent() {
 					width: '100%',
 					height: '100%',
 					objectFit: 'cover',
+					backgroundColor: '#1D267D',
 					zIndex: -1,
 				}}
 			>
@@ -54,14 +56,14 @@ function HeroContent() {
 					intuitive, component-based system to build your application's user
 					interface.
 				</h1>
-				<h2>
-					<br />
-					<br />
-					<br />
-					<LightFont>
-						This is a <code>PageHeader</code> component
-					</LightFont>
-				</h2>
+				<br />
+				<br />
+				<br />
+				<br />
+				<LightFont>
+					As an example, this part of the page is constructed using the{' '}
+					<code>PageHeader</code> component.
+				</LightFont>
 			</ScrollText>
 		</Container>
 	);

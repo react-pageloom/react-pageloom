@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import { useMemo } from 'react';
 import { Container } from 'react-pageloom';
 import { WHITE } from '../constants';
-import { StrongBlack, Strong } from './HowToUseBlock';
+import { StrongBlack } from './HowToUseBlock';
 import { LightFont } from './HeroContent';
 
 const StyledTable = styled.table`

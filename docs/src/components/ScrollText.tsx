@@ -72,7 +72,7 @@ const ScrollText = ({
 			<StarWarsSection>
 				<Crawl>
 					<Title>{title}</Title>
-					<p>{children}</p>
+					{children}
 				</Crawl>
 			</StarWarsSection>
 		</Container>
