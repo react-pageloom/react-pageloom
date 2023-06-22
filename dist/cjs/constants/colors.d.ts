@@ -1,0 +1,10 @@
+export declare const BLACK = "#000000";
+export declare const WHITE = "#ffffff";
+export declare const PRIMARY = "#000000";
+export declare const SECONDARY = "#010101";
+export declare const SHADE_1 = "#F5F5F5";
+export declare const SHADE_2 = "#E0E0E0";
+export declare const SHADE_3 = "#BDBDBD";
+export declare const SHADE_4 = "#9E9E9E";
+export declare const SHADE_5 = "#757575";
+export declare const SHADE_6 = "#616161";

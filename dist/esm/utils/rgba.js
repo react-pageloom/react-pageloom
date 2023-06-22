@@ -1,0 +1,1 @@
+const t=function(t){let n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1,r=t.replace("#","");3===r.length&&(r=`${r[0]}${r[0]}${r[1]}${r[1]}${r[2]}${r[2]}`);return n>1&&n<=100&&(n/=100),`rgba(${parseInt(r.substring(0,2),16)}, ${parseInt(r.substring(2,4),16)}, ${parseInt(r.substring(4,6),16)}, ${n})`};export{t as rgba};
