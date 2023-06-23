@@ -147,6 +147,14 @@ export const PageNavigation = forwardRef<HTMLDivElement, NavigationProps>(
 							...(fixedNav && snapScroll && { containerId: 'loom-wrapper' }),
 							...(fixedNav && { to: 'loom-header' }),
 						});
+
+						setTimeout(() => {
+							window.history.pushState(
+								'',
+								document.title,
+								window.location.pathname + window.location.search,
+							);
+						}, duration + 100);
 					}}
 				>
 					{logoElement}

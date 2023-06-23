@@ -7,8 +7,10 @@ import {
 	forwardRef,
 	isValidElement,
 	ReactElement,
+	useEffect,
 } from 'react';
 import { Link } from 'react-scroll';
+import { scroller } from 'react-scroll';
 import { ThemeUICSSObject } from 'theme-ui';
 import { JSX } from 'theme-ui/jsx-runtime';
 import { classNames } from '@src/utils/classNames';
@@ -114,6 +116,23 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 			}
 		});
 
+		const handleSetActive = (to: string) => {
+			window.history.pushState({}, '', `#${to}`);
+		};
+
+		useEffect(() => {
+			const hash = window.location.hash.substring(1);
+			if (hash) {
+				scroller.scrollTo(hash, {
+					duration,
+					delay: 0,
+					smooth: true,
+					offset: fixedNav ? -55 : 0,
+					...(snapScroll && { containerId: 'loom-wrapper' }),
+				});
+			}
+		}, []);
+
 		const blockLinks = blocks.map((block: ReactElement) => {
 			const { id, label } = block.props;
 			return (
@@ -125,6 +144,7 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 					spy={true}
 					smooth={true}
 					duration={duration}
+					onSetActive={handleSetActive}
 					offset={fixedNav ? -55 : 0}
 					{...(snapScroll && { containerId: 'loom-wrapper' })}
 				>

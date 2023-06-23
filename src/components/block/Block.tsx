@@ -1,5 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { forwardRef } from 'react';
+import { Element } from 'react-scroll';
 import { ThemeUICSSObject } from 'theme-ui';
 import { classNames } from '@src/utils/classNames';
 import { Block } from './Block.styled';
@@ -54,6 +55,7 @@ export const PageBlock = forwardRef<HTMLDivElement, BlockProps>(
 		ref,
 	): JSX.Element => {
 		const classes = classNames('loom-block_root', className);
+		// add name prop for react-scroll to Block
 
 		return (
 			<Block
@@ -66,7 +68,9 @@ export const PageBlock = forwardRef<HTMLDivElement, BlockProps>(
 				aria-labelledby={label}
 				{...rest}
 			>
-				{children}
+				<Element name={id} className="loom-block_element">
+					{children}
+				</Element>
 			</Block>
 		);
 	},
