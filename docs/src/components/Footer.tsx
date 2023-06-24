@@ -5,7 +5,8 @@ import { WHITE } from '../constants';
 const FooterWrapper = styled.div`
 	width: 100%;
 	min-height: 100px;
-	background-color: #000;
+	background: linear-gradient(0, #000000aa 0%, #000000bb 100%),
+		url(https://grainy-gradients.vercel.app/noise.svg);
 	color: ${WHITE};
 	display: flex;
 	justify-content: center;

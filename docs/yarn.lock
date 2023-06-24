@@ -2578,7 +2578,7 @@ react-is@^16.13.1:
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
 react-pageloom@../:
-  version "0.0.1"
+  version "0.0.2"
   dependencies:
     "@babel/runtime" "^7.22.5"
     "@types/react-scroll" "^1.8.7"

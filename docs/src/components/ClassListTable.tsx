@@ -21,7 +21,8 @@ const StyledTable = styled.table`
 	overflow: hidden;
 	background-color: #46458c;
 	max-height: 500px;
-	overflow-y: auto;
+	overflow-x: auto;
+	display: block;
 
 	tr {
 		:last-child {
@@ -48,6 +49,12 @@ const StyledTable = styled.table`
 		border-bottom: 2px solid ${WHITE};
 		color: rgb(17, 27, 39);
 		font-weight: 700;
+	}
+
+	@media (max-width: 1094px) {
+		width: 100%;
+		margin: 0;
+		display: block;
 	}
 `;
 
@@ -210,7 +217,7 @@ function ClassListTable() {
 				justifyContent: 'space-around',
 			}}
 		>
-			<Title>CSS</Title>
+			<Title>Styling</Title>
 			<Description>
 				Using the <StrongBlack>sx</StrongBlack> prop or css file, you can style
 				the components however you want.

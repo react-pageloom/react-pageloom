@@ -33,7 +33,9 @@ function App() {
 				id="how-to-use"
 				label="How to use?"
 				sx={{
-					backgroundColor: '#1D267D',
+					background: `linear-gradient(0, #1D267DAA 0%, #46458CAA 100%),
+    url(https://grainy-gradients.vercel.app/noise.svg)`,
+					filter: 'contrast(1.8)',
 				}}
 			>
 				<HowToUseBlock />
@@ -42,7 +44,9 @@ function App() {
 				id="optional-props"
 				label="Props"
 				sx={{
-					backgroundColor: '#46458C',
+					background: `linear-gradient(90deg, #46458CAA 0%, #6554AF99 100%),
+					url(https://grainy-gradients.vercel.app/noise.svg)`,
+					filter: 'contrast(1.5)',
 				}}
 			>
 				<PropsTable />
@@ -51,7 +55,9 @@ function App() {
 				id="css-classes"
 				label="CSS Classes"
 				sx={{
-					backgroundColor: '#1D267D',
+					background: `linear-gradient(0, #1D267DAA 0%, #46458CAA 100%),
+    url(https://grainy-gradients.vercel.app/noise.svg)`,
+					filter: 'contrast(1.8)',
 				}}
 			>
 				<ClassListTable />

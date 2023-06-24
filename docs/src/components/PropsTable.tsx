@@ -49,6 +49,12 @@ const StyledTable = styled.table`
 		color: rgb(17, 27, 39);
 		font-weight: 700;
 	}
+
+	@media (max-width: 1094px) {
+		width: 100%;
+		margin: 0;
+		display: block;
+	}
 `;
 
 const StyledContainer = styled(Container)`
@@ -81,6 +87,12 @@ const ExamplesBlock = styled.div`
 	text-align: center;
 	overflow: hidden;
 	width: 75%;
+
+	@media (max-width: 1094px) {
+		width: 100%;
+		margin: 2rem 0;
+		display: block;
+	}
 `;
 
 const Examples = styled.h2`
@@ -175,67 +187,63 @@ function PropsTable() {
 				justifyContent: 'space-around',
 			}}
 		>
-			<div>
-				<Title>Props</Title>
-				<Description>
-					This table showcases the optional props that you can pass to the React
-					Pageloom components. Each prop is listed with a description, the
-					component(s) it can be used with, and an example usage.
-				</Description>
+			<Title>Props</Title>
+			<Description>
+				This table showcases the optional props that you can pass to the React
+				Pageloom components. Each prop is listed with a description, the
+				component(s) it can be used with, and an example usage.
+			</Description>
 
-				<StyledTable {...getTableProps()}>
-					<thead>
-						{headerGroups.map((headerGroup: HeaderGroup<IData>) => (
-							<tr {...headerGroup.getHeaderGroupProps()}>
-								{headerGroup.headers.map((column) => (
-									<th {...column.getHeaderProps()}>
-										{column.render('Header')}
-									</th>
+			<StyledTable {...getTableProps()}>
+				<thead>
+					{headerGroups.map((headerGroup: HeaderGroup<IData>) => (
+						<tr {...headerGroup.getHeaderGroupProps()}>
+							{headerGroup.headers.map((column) => (
+								<th {...column.getHeaderProps()}>{column.render('Header')}</th>
+							))}
+						</tr>
+					))}
+				</thead>
+				<tbody {...getTableBodyProps()}>
+					{rows.map((row: Row<IData>) => {
+						prepareRow(row);
+						return (
+							<tr {...row.getRowProps()}>
+								{row.cells.map((cell: Cell<IData>) => (
+									<td {...cell.getCellProps()}>{cell.render('Cell')}</td>
 								))}
 							</tr>
-						))}
-					</thead>
-					<tbody {...getTableBodyProps()}>
-						{rows.map((row: Row<IData>) => {
-							prepareRow(row);
-							return (
-								<tr {...row.getRowProps()}>
-									{row.cells.map((cell: Cell<IData>) => (
-										<td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-									))}
-								</tr>
-							);
-						})}
-					</tbody>
-				</StyledTable>
-				<ExamplesBlock>
-					<Examples>Examples:</Examples>
-					<ExampleText>
-						<Strong>sx:</Strong>
-						<SyntaxHighlighter language="tsx" style={coldarkDark}>
-							{`<PageWrapper sx={{ color: 'red' }}>`}
-						</SyntaxHighlighter>
-					</ExampleText>
-					<ExampleText>
-						<Strong>fixedNav:</Strong>
-						<SyntaxHighlighter language="tsx" style={coldarkDark}>
-							{`<PageWrapper fixedNav>`}
-						</SyntaxHighlighter>
-					</ExampleText>
-					<ExampleText>
-						<Strong>snapScroll:</Strong>
-						<SyntaxHighlighter language="tsx" style={coldarkDark}>
-							{`<PageWrapper snapScroll>`}
-						</SyntaxHighlighter>
-					</ExampleText>
-					<ExampleText>
-						<Strong>centered:</Strong>
-						<SyntaxHighlighter language="tsx" style={coldarkDark}>
-							{`<Container centered>`}
-						</SyntaxHighlighter>
-					</ExampleText>
-				</ExamplesBlock>
-			</div>
+						);
+					})}
+				</tbody>
+			</StyledTable>
+			<ExamplesBlock>
+				<Examples>Examples:</Examples>
+				<ExampleText>
+					<Strong>sx:</Strong>
+					<SyntaxHighlighter language="tsx" style={coldarkDark}>
+						{`<PageWrapper sx={{ color: 'red' }}>`}
+					</SyntaxHighlighter>
+				</ExampleText>
+				<ExampleText>
+					<Strong>fixedNav:</Strong>
+					<SyntaxHighlighter language="tsx" style={coldarkDark}>
+						{`<PageWrapper fixedNav>`}
+					</SyntaxHighlighter>
+				</ExampleText>
+				<ExampleText>
+					<Strong>snapScroll:</Strong>
+					<SyntaxHighlighter language="tsx" style={coldarkDark}>
+						{`<PageWrapper snapScroll>`}
+					</SyntaxHighlighter>
+				</ExampleText>
+				<ExampleText>
+					<Strong>centered:</Strong>
+					<SyntaxHighlighter language="tsx" style={coldarkDark}>
+						{`<Container centered>`}
+					</SyntaxHighlighter>
+				</ExampleText>
+			</ExamplesBlock>
 			<LightFont>
 				Another <code>PageBlock</code> component
 			</LightFont>

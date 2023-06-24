@@ -122,6 +122,12 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 
 		useEffect(() => {
 			const hash = window.location.hash.substring(1);
+			const removeHashOnTop = () => {
+				if (window.scrollY === 0) {
+					window.history.pushState({}, '', window.location.pathname);
+				}
+			};
+
 			if (hash) {
 				scroller.scrollTo(hash, {
 					duration,
@@ -131,6 +137,12 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 					...(snapScroll && { containerId: 'loom-wrapper' }),
 				});
 			}
+
+			window.addEventListener('scroll', removeHashOnTop);
+
+			return () => {
+				window.removeEventListener('scroll', removeHashOnTop);
+			};
 		}, []);
 
 		const blockLinks = blocks.map((block: ReactElement) => {

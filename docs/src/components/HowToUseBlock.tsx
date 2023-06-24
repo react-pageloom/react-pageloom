@@ -9,6 +9,10 @@ const DescriptionWrapper = styled.div`
 	width: 90%;
 	margin: 0 auto;
 	box-sizing: border-box;
+
+	@media (max-width: 1094px) {
+		width: 100%;
+	}
 `;
 const ComponentDescription = styled.div`
 	font-size: 1rem;
@@ -16,6 +20,10 @@ const ComponentDescription = styled.div`
 	padding: 0.2em 0.4em;
 	border-bottom: 1px solid ${WHITE};
 	line-height: 2;
+
+	@media (max-width: 1094px) {
+		font-size: 0.8rem;
+	}
 `;
 
 export const Strong = styled.span`
@@ -38,6 +46,8 @@ const FlexContainer = styled.div`
 	display: flex;
 	flex-direction: row;
 	gap: 1em;
+	width: 100%;
+	box-sizing: border-box;
 
 	@media (max-width: 1094px) {
 		flex-direction: column;
@@ -51,28 +61,29 @@ function HowToUseBlock() {
 			sx={{
 				justifyContent: 'space-around',
 				padding: '2rem 0',
+				overflow: 'hidden',
 			}}
 		>
-			<div>
-				<h1
+			<h1
+				style={{
+					textAlign: 'center',
+					fontSize: '2rem',
+					paddingBottom: '1rem',
+				}}
+			>
+				How to use?
+			</h1>
+			<FlexContainer>
+				<div
 					style={{
-						textAlign: 'center',
-						fontSize: '2rem',
-						paddingBottom: '1rem',
+						boxSizing: 'border-box',
+						width: '100%',
+						padding: '0',
+						margin: '0',
 					}}
 				>
-					How to use?
-				</h1>
-				<FlexContainer>
-					<div
-						style={{
-							width: '100%',
-							padding: '0',
-							margin: '0',
-						}}
-					>
-						<SyntaxHighlighter language="tsx" style={coldarkDark}>
-							{`<PageWrapper>
+					<SyntaxHighlighter language="tsx" style={coldarkDark}>
+						{`<PageWrapper>
   <PageHeader>
     <HeaderLogo>Logo</HeaderLogo>
     <Container>
@@ -92,46 +103,45 @@ function HowToUseBlock() {
   </PageFooter>
 </PageWrapper>
 `}
-						</SyntaxHighlighter>
-					</div>
-					<DescriptionWrapper>
-						<ComponentDescription>
-							<Strong>PageWrapper:</Strong> Serves as the parent component
-							encompassing the entire page.
-						</ComponentDescription>
+					</SyntaxHighlighter>
+				</div>
+				<DescriptionWrapper>
+					<ComponentDescription>
+						<Strong>PageWrapper:</Strong> Serves as the parent component
+						encompassing the entire page.
+					</ComponentDescription>
 
-						<ComponentDescription>
-							<Strong>PageHeader:</Strong> Designates the header section of the
-							page. Ideal for top-level navigation or introductory content.
-						</ComponentDescription>
+					<ComponentDescription>
+						<Strong>PageHeader:</Strong> Designates the header section of the
+						page. Ideal for top-level navigation or introductory content.
+					</ComponentDescription>
 
-						<ComponentDescription>
-							<Strong>PageBlock:</Strong> Represents a main content section of
-							the page. Utilize multiple <StrongBlack>PageBlocks</StrongBlack>{' '}
-							to structure your page content.
-						</ComponentDescription>
+					<ComponentDescription>
+						<Strong>PageBlock:</Strong> Represents a main content section of the
+						page. Utilize multiple <StrongBlack>PageBlocks</StrongBlack> to
+						structure your page content.
+					</ComponentDescription>
 
-						<ComponentDescription>
-							<Strong>PageFooter:</Strong> Specifies the footer section of the
-							page, perfect for secondary information or links.
-						</ComponentDescription>
+					<ComponentDescription>
+						<Strong>PageFooter:</Strong> Specifies the footer section of the
+						page, perfect for secondary information or links.
+					</ComponentDescription>
 
-						<ComponentDescription>
-							<Strong>Container (optional):</Strong> A versatile container for
-							content within <StrongBlack>PageBlocks</StrongBlack>,{' '}
-							<StrongBlack>PageHeader</StrongBlack>, or{' '}
-							<StrongBlack>PageFooter</StrongBlack>. Use it to center your
-							content and ensure responsiveness.
-						</ComponentDescription>
+					<ComponentDescription>
+						<Strong>Container (optional):</Strong> A versatile container for
+						content within <StrongBlack>PageBlocks</StrongBlack>,{' '}
+						<StrongBlack>PageHeader</StrongBlack>, or{' '}
+						<StrongBlack>PageFooter</StrongBlack>. Use it to center your content
+						and ensure responsiveness.
+					</ComponentDescription>
 
-						<ComponentDescription>
-							<Strong>HeaderLogo (optional):</Strong> Use this within the{' '}
-							<StrongBlack>PageHeader</StrongBlack>
-							to display your logo.
-						</ComponentDescription>
-					</DescriptionWrapper>
-				</FlexContainer>
-			</div>
+					<ComponentDescription>
+						<Strong>HeaderLogo (optional):</Strong> Use this within the{' '}
+						<StrongBlack>PageHeader</StrongBlack>
+						to display your logo.
+					</ComponentDescription>
+				</DescriptionWrapper>
+			</FlexContainer>
 			<LightFont
 				style={{
 					textAlign: 'center',

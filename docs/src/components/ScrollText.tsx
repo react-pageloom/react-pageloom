@@ -51,7 +51,12 @@ const Crawl = styled.div`
 	position: relative;
 	top: 99999px;
 	transform-origin: 50% 100%;
-	animation: ${crawlAnimation} 10s linear forwards;
+	animation: ${crawlAnimation} 5s linear forwards;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 `;
 
 const Title = styled.div`

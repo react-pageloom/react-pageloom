@@ -21,6 +21,10 @@ const LogoImage = styled.img`
 	aspect-ratio: 1 / 1;
 
 	animation: ${starEffect} 3s ease-in-out infinite;
+
+	@media (max-width: 768px) {
+		max-width: 250px;
+	}
 `;
 
 function ReactLogo() {
