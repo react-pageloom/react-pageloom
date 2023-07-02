@@ -2,7 +2,7 @@
 import { forwardRef } from 'react';
 import { ThemeUICSSObject } from 'theme-ui';
 import { classNames } from '@src/utils/classNames';
-import { Block } from './Block.styled';
+import { Block, GridWrapper } from './Block.styled';
 
 export interface BlockProps extends React.HTMLAttributes<HTMLDivElement> {
 	/**
@@ -29,6 +29,17 @@ export interface BlockProps extends React.HTMLAttributes<HTMLDivElement> {
 	 */
 	fixedNav?: boolean;
 	sx?: ThemeUICSSObject;
+	/**
+	 * @internal If true, the block will be a grid container
+	 * @default false
+	 * */
+	gridContainer?: boolean;
+	/**
+	 * @internal Children to be rendered before the grid container, if `gridContainer` is true
+	 *
+	 * */
+
+	beforeGridChildren?: React.ReactNode;
 }
 
 /**
@@ -49,6 +60,8 @@ export const PageBlock = forwardRef<HTMLDivElement, BlockProps>(
 			label = '',
 			snap = false,
 			fixedNav = false,
+			gridContainer = false,
+			beforeGridChildren,
 			...rest
 		},
 		ref,
@@ -66,7 +79,8 @@ export const PageBlock = forwardRef<HTMLDivElement, BlockProps>(
 				aria-labelledby={label}
 				{...rest}
 			>
-				{children}
+				{gridContainer && beforeGridChildren}
+				{gridContainer ? <GridWrapper>{children}</GridWrapper> : children}
 			</Block>
 		);
 	},

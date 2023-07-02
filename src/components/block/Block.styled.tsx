@@ -26,3 +26,12 @@ export const Block = styled.section<{
 		min-height: calc(${SCREEN_HEIGHT} - ${NAVBAR_HEIGHT}px);
 	`}
 `;
+
+export const GridWrapper = styled.div({
+	display: 'grid',
+	gridTemplateColumns: `repeat(auto-fit, minmax(350px, 1fr))`,
+	gap: '10px',
+	justifyContent: 'center',
+	alignItems: 'center',
+	justifyItems: 'center',
+});

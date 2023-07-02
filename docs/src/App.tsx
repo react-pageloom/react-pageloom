@@ -11,6 +11,35 @@ import HeroContent from './components/HeroContent';
 import Footer from './components/Footer';
 import { ReactLogoText } from './components/Logo';
 import ClassListTable from './components/ClassListTable';
+import { styled } from 'styled-components';
+
+const CardContainer = styled.div`
+	background-color: #f2f2f2;
+	border-radius: 4px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	width: '100%';
+`;
+
+const CardTitle = styled.h2`
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 10px;
+`;
+
+const CardSubtitle = styled.h3`
+	font-size: 16px;
+	color: #888888;
+`;
+
+const Card = ({ title, subtitle }: { title: string; subtitle: string }) => {
+	return (
+		<CardContainer>
+			<CardTitle>{title}</CardTitle>
+			<CardSubtitle>{subtitle}</CardSubtitle>
+		</CardContainer>
+	);
+};
 
 function App() {
 	return (
@@ -55,6 +84,22 @@ function App() {
 				}}
 			>
 				<ClassListTable />
+			</PageBlock>
+			<PageBlock
+				id="grid-class"
+				label="Grid Class"
+				gridContainer
+				sx={{
+					backgroundColor: '#46458C',
+				}}
+			>
+				<Card title="Card 1" subtitle="Subtitle" />
+				<Card title="Card 2" subtitle="Subtitle" />
+				<Card title="Card 3" subtitle="Subtitle" />
+				<Card title="Card 4" subtitle="Subtitle" />
+				<Card title="Card 5" subtitle="Subtitle" />
+				<Card title="Card 6" subtitle="Subtitle" />
+				<Card title="Card 7" subtitle="Subtitle" />
 			</PageBlock>
 
 			<PageFooter>
