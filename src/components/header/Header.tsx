@@ -30,6 +30,11 @@ export interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 	 * @default false
 	 */
 	fixedNav?: boolean;
+	/**
+	 * @internal If true, the navigation bar will be rendered in the drawer
+	 * @default false
+	 * */
+	drawerNav?: boolean;
 	sx?: ThemeUICSSObject;
 }
 
@@ -51,6 +56,7 @@ export const PageHeader = forwardRef<HTMLDivElement, HeaderProps>(
 			blockLinks,
 			snap = false,
 			fixedNav = false,
+			drawerNav = false,
 			...rest
 		},
 		ref,
@@ -84,6 +90,7 @@ export const PageHeader = forwardRef<HTMLDivElement, HeaderProps>(
 						blockLinks={blockLinks}
 						fixedNav={fixedNav}
 						logoElement={logoElement}
+						drawerNav={drawerNav}
 					/>
 				)}
 				{childrenElements}

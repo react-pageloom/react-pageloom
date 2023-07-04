@@ -136,3 +136,21 @@ export const NavLinksContainer = styled.div`
 		display: none;
 	}
 `;
+
+export const NavDrawerLinkContainer = styled.div`
+	flex: 1;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 1rem;
+	& a.loom-nav_link {
+		text-decoration: none;
+		color: ${BLACK};
+		background-color: ${WHITE};
+		padding: 0.5rem 1rem;
+		border-radius: 0.5rem;
+		transition: all 100ms ease-in-out;
+		cursor: pointer;
+		user-select: none;
+	}
+`;

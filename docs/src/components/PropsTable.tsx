@@ -20,7 +20,7 @@ const StyledTable = styled.table`
 	width: 80%;
 	margin: 0 auto;
 	border-radius: 4px;
-	overflow: hidden;
+	overflow: auto;
 	background-color: #1d267d;
 
 	tr {
@@ -138,6 +138,11 @@ function PropsTable() {
 			{
 				prop: <Strong>fixedNav</Strong>,
 				description: 'fixes the nav to the top of the page on scroll',
+				component: <StrongBlack>PageWrapper</StrongBlack>,
+			},
+			{
+				prop: <Strong>drawerNav</Strong>,
+				description: 'changes the nav to a drawer on mobile',
 				component: <StrongBlack>PageWrapper</StrongBlack>,
 			},
 			{
