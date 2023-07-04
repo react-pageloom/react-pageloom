@@ -14,7 +14,7 @@ import ClassListTable from './components/ClassListTable';
 
 function App() {
 	return (
-		<PageWrapper fixedNav>
+		<PageWrapper fixedNav drawerNav>
 			<PageHeader>
 				<HeaderLogo
 					sx={{

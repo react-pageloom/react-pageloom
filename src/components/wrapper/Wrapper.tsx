@@ -39,6 +39,11 @@ export interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 	 * @default false
 	 */
 	fixedNav?: boolean;
+	/**
+	 * If true, the navigation bar will be rendered in the drawer
+	 * @default true
+	 * */
+	drawerNav?: boolean;
 	sx?: ThemeUICSSObject;
 }
 
@@ -68,6 +73,7 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 			duration = 500,
 			snapScroll = false,
 			fixedNav = false,
+			drawerNav = false,
 			...rest
 		},
 		ref,
@@ -183,6 +189,7 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 							logoElement={logoElement}
 							snapScroll={snapScroll}
 							fixedNav={fixedNav}
+							drawerNav={drawerNav}
 						/>
 					)}
 					{enhancedHeader}
