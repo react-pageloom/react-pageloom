@@ -6,7 +6,14 @@
 	"keywords": [
 		"react",
 		"react-components",
-		"react-library"
+		"react-library",
+		"block",
+		"block-based",
+		"ui-components",
+		"single-page-application",
+		"spa",
+		"react-pageloom",
+		"wrapper"
 	],
 	"author": "react-pageloom",
 	"repository": {
