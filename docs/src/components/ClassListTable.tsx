@@ -21,7 +21,7 @@ const StyledTable = styled.table`
 	overflow: hidden;
 	background-color: #46458c;
 	max-height: 500px;
-	overflow-x: auto;
+	overflow: auto;
 	display: block;
 
 	tr {

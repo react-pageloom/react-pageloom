@@ -101,7 +101,17 @@ export const PageMobileNav = ({
 							paddingTop: '2rem',
 						}}
 					>
-						{blockLinks}
+						{blockLinks.map((link: React.ReactNode, index: number) => (
+							<NavDrawerLinkContainer
+								key={`loom-link-drawer-${index}`}
+								className="loom-header_nav-links-drawer-item"
+							>
+								{createElement((link as React.ReactElement).type, {
+									...(link as React.ReactElement).props,
+									onClick: () => setIsMobileNavOpen(false),
+								})}
+							</NavDrawerLinkContainer>
+						))}
 					</NavDrawerLinkContainer>
 				</PageDrawer>
 			)}

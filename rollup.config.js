@@ -5,7 +5,6 @@ const terser = require('@rollup/plugin-terser');
 const del = require('rollup-plugin-delete');
 const peerDepsExternal = require('rollup-plugin-peer-deps-external');
 const typescript = require('rollup-plugin-typescript2');
-const ttypescript = require('ttypescript');
 const url = require('@rollup/plugin-url');
 const pkg = require('./package.json');
 
@@ -36,7 +35,7 @@ module.exports = {
 		url(),
 		peerDepsExternal(),
 		typescript({
-			typescript: ttypescript,
+			check: false,
 			tsconfig: './tsconfig.build.json',
 		}),
 		nodeResolve(),
