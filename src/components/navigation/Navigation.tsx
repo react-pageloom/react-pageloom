@@ -1,10 +1,12 @@
 /** @jsxImportSource theme-ui */
-import { createElement, forwardRef, useEffect, useState } from 'react';
+import { createElement, forwardRef, useEffect, useRef, useState } from 'react';
 import { animateScroll } from 'react-scroll';
 import { classNames } from '@src/utils/classNames';
 import { SCREEN_MD } from '@src/constants/breakpoints';
+import { PageDrawer } from '../drawer';
 import {
 	Nav,
+	NavDrawerLinkContainer,
 	NavLinksContainer,
 	NavLogoContainer,
 	NavMobileButton,
@@ -14,10 +16,13 @@ import {
 
 export const PageMobileNav = ({
 	blockLinks,
+	drawerNav,
 }: {
 	blockLinks?: React.ReactNode[];
+	drawerNav?: boolean;
 }) => {
 	const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+	const buttonRef = useRef<HTMLButtonElement>(null);
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -36,6 +41,7 @@ export const PageMobileNav = ({
 	return (
 		<>
 			<NavMobileButton
+				ref={buttonRef}
 				id="loom-header_nav-mobile-button"
 				onClick={() => setIsMobileNavOpen((prev) => !prev)}
 			>
@@ -46,7 +52,7 @@ export const PageMobileNav = ({
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
 				>
-					{isMobileNavOpen ? (
+					{isMobileNavOpen && !drawerNav ? (
 						<path
 							d="M6 18L18 6M6 6L18 18"
 							stroke="currentColor"
@@ -65,20 +71,40 @@ export const PageMobileNav = ({
 					)}
 				</svg>
 			</NavMobileButton>
-			<NavMobileMenu $isOpen={isMobileNavOpen}>
-				{blockLinks &&
-					blockLinks.map((link: React.ReactNode, index: number) => (
-						<NavMobileMenuItem
-							key={`mobile-menu-item-${index}`}
-							className="loom-header_nav-mobile-menu-item"
-						>
-							{createElement((link as React.ReactElement).type, {
-								...(link as React.ReactElement).props,
-								onClick: () => setIsMobileNavOpen(false),
-							})}
-						</NavMobileMenuItem>
-					))}
-			</NavMobileMenu>
+			{!drawerNav && (
+				<NavMobileMenu $isOpen={isMobileNavOpen}>
+					{blockLinks &&
+						blockLinks.map((link: React.ReactNode, index: number) => (
+							<NavMobileMenuItem
+								key={`mobile-menu-item-${index}`}
+								className="loom-header_nav-mobile-menu-item"
+							>
+								{createElement((link as React.ReactElement).type, {
+									...(link as React.ReactElement).props,
+									onClick: () => setIsMobileNavOpen(false),
+								})}
+							</NavMobileMenuItem>
+						))}
+				</NavMobileMenu>
+			)}
+			{drawerNav && (
+				<PageDrawer
+					drawerOpen={isMobileNavOpen}
+					setDrawerOpen={setIsMobileNavOpen}
+					buttonRef={buttonRef}
+				>
+					<NavDrawerLinkContainer
+						key={`loom-link-drawer`}
+						className="loom-header_nav-links-drawer"
+						sx={{
+							flexDirection: 'column',
+							paddingTop: '2rem',
+						}}
+					>
+						{blockLinks}
+					</NavDrawerLinkContainer>
+				</PageDrawer>
+			)}
 		</>
 	);
 };
@@ -110,6 +136,12 @@ interface NavigationProps extends React.HTMLAttributes<HTMLDivElement> {
 	 * @default false
 	 */
 	snapScroll?: boolean;
+	/**
+	 *
+	 * @internal If true, the navigation bar will be rendered in the drawer
+	 * @default false
+	 * */
+	drawerNav?: boolean;
 }
 
 /**
@@ -125,12 +157,12 @@ export const PageNavigation = forwardRef<HTMLDivElement, NavigationProps>(
 			logoElement,
 			duration = 500,
 			blockLinks,
+			drawerNav = false,
 			...rest
 		},
 		ref,
 	): JSX.Element => {
 		const classes = classNames(className);
-
 		return (
 			<Nav
 				$fixed={fixedNav}
@@ -162,7 +194,7 @@ export const PageNavigation = forwardRef<HTMLDivElement, NavigationProps>(
 				<NavLinksContainer className="loom-navigation_nav-links">
 					{blockLinks}
 				</NavLinksContainer>
-				<PageMobileNav blockLinks={blockLinks} />
+				<PageMobileNav blockLinks={blockLinks} drawerNav={drawerNav} />
 			</Nav>
 		);
 	},
