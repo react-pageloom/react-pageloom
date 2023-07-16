@@ -4,6 +4,7 @@ import {
 	PageHeader,
 	PageWrapper,
 	PageFooter,
+	GridContainer,
 } from 'react-pageloom';
 import PropsTable from './components/PropsTable';
 import HowToUseBlock from './components/HowToUseBlock';
@@ -62,7 +63,23 @@ function App() {
 			>
 				<ClassListTable />
 			</PageBlock>
-
+			<PageBlock
+				id="grid-container"
+				label="Grid Container"
+				sx={{
+					background: `linear-gradient(0, #1D267DAA 0%, #46458CAA 100%),
+    url(https://grainy-gradients.vercel.app/noise.svg)`,
+					filter: 'contrast(1.8)',
+				}}
+			>
+				<GridContainer>
+					<div>Test</div>
+					<div>Test</div>
+					<div>Test</div>
+					<div>Test</div>
+					<div>Test</div>
+				</GridContainer>
+			</PageBlock>
 			<PageFooter>
 				<Footer />
 			</PageFooter>
