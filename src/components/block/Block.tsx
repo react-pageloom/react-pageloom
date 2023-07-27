@@ -65,7 +65,6 @@ export const PageBlock = forwardRef<HTMLDivElement, BlockProps>(
 				ref={ref}
 				id={id}
 				aria-label={label}
-				aria-labelledby={label}
 				{...rest}
 			>
 				<Element name={id} className="loom-block_element">

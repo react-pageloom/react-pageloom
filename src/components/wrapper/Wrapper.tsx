@@ -1,5 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Global } from '@emotion/react';
+import { Theme } from '@src/theme';
 import emotionReset from 'emotion-reset';
 import {
 	Children,
@@ -9,16 +10,22 @@ import {
 	ReactElement,
 	useEffect,
 } from 'react';
-import { Link } from 'react-scroll';
-import { scroller } from 'react-scroll';
+import { Link, scroller } from 'react-scroll';
 import { ThemeUICSSObject } from 'theme-ui';
 import { JSX } from 'theme-ui/jsx-runtime';
 import { classNames } from '@src/utils/classNames';
-import { PageBlock } from '../block';
-import { PageHeader } from '../header';
+import { BlockProps, PageBlock } from '../block';
+import { FooterProps, PageFooter } from '../footer';
+import { HeaderProps, PageHeader } from '../header';
 import { HeaderLogo } from '../logo';
 import { PageNavigation } from '../navigation/Navigation';
+import { ThemeWrapper } from '../themeprovider/ThemeProvider';
 import { BlockContainer, Wrapper } from './Wrapper.styled';
+
+type PageChild =
+	| React.ReactElement<HeaderProps, typeof PageHeader>
+	| React.ReactElement<BlockProps, typeof PageBlock>
+	| React.ReactElement<FooterProps, typeof PageFooter>;
 
 export interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 	/**
@@ -44,6 +51,14 @@ export interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 	 * @default true
 	 * */
 	drawerNav?: boolean;
+	/**
+	 * Custom theme object. It will be merged with the default theme.
+	 */
+	theme?: Partial<Theme>;
+	/**
+	 * Children of the `PageWrapper` component. Can be `PageHeader`, `PageBlock`, and `PageFooter` components.
+	 */
+	children?: React.ReactNode | PageChild[];
 	sx?: ThemeUICSSObject;
 }
 
@@ -74,6 +89,7 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 			snapScroll = false,
 			fixedNav = false,
 			drawerNav = false,
+			theme,
 			...rest
 		},
 		ref,
@@ -174,7 +190,7 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 		const enhancedHeader = header ? cloneElement(header, { blockLinks }) : null;
 
 		return (
-			<>
+			<ThemeWrapper theme={theme}>
 				<Global styles={{ ...emotionReset, boxSizing: 'border-box' }} />
 				<Wrapper
 					id="loom-wrapper"
@@ -196,7 +212,7 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 					<BlockContainer>{blocks}</BlockContainer>
 					{footer}
 				</Wrapper>
-			</>
+			</ThemeWrapper>
 		);
 	},
 );

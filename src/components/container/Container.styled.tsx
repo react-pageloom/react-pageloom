@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Theme } from '@src/theme';
 import { SCREEN_LG, SCREEN_SM, SCREEN_XM } from '@src/constants/breakpoints';
 import { SCREEN_HEIGHT } from '@src/constants/sizes';
 import { COLUMN_WIDTH, GUTTER } from '@src/constants/spacing';
@@ -6,7 +7,10 @@ import { COLUMN_WIDTH, GUTTER } from '@src/constants/spacing';
 export const FluidContainer = styled.div<{
 	$fixedNav: boolean;
 	$centered: boolean;
+	theme: Theme;
 }>`
+	color: ${(props) => props.theme.colors.text};
+
 	margin-left: auto;
 	margin-right: auto;
 	width: 100%;
@@ -27,7 +31,10 @@ export const FluidContainer = styled.div<{
 export const Container = styled.div<{
 	$fixedNav: boolean;
 	$centered: boolean;
+	theme: Theme;
 }>`
+	color: ${(props) => props.theme.colors.text};
+
 	width: 100%;
 	max-width: ${COLUMN_WIDTH * 4 + GUTTER * 2 * 3}px;
 	margin-left: auto;
