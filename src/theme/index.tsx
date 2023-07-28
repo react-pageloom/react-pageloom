@@ -8,7 +8,6 @@ export interface DefaultTheme {
 		text: string;
 		navBackground: string;
 		navText: string;
-		link: string;
 		activeLink: string;
 		hoverLink: string;
 		mobileMenuBackground: string;
@@ -25,7 +24,6 @@ export const theme: Theme = {
 		secondary: '#80c1ff',
 		navBackground: '#f8f9fa',
 		navText: '#333333',
-		link: '#007BFF',
 		activeLink: '#0056b3',
 		hoverLink: '#0056b3',
 		mobileMenuBackground: '#f8f9fa',

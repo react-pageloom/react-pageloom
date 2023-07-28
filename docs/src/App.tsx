@@ -11,10 +11,25 @@ import HeroContent from './components/HeroContent';
 import Footer from './components/Footer';
 import { ReactLogoText } from './components/Logo';
 import ClassListTable from './components/ClassListTable';
+import CustomStylesBlock from './components/StylingBlock';
 
 function App() {
+	const theme = {
+		colors: {
+			text: '#f8f9fa',
+			background: '#ffffff',
+			primary: '#46458CE6',
+			secondary: 'transparent',
+			navBackground: '#f8f9fa',
+			navText: '#333333',
+			activeLink: '#46458C',
+			hoverLink: '#46458C',
+			mobileMenuBackground: '#f8f9fa',
+		},
+	};
+
 	return (
-		<PageWrapper fixedNav drawerNav>
+		<PageWrapper fixedNav drawerNav theme={theme}>
 			<PageHeader>
 				<HeaderLogo
 					sx={{
@@ -52,17 +67,27 @@ function App() {
 				<PropsTable />
 			</PageBlock>
 			<PageBlock
-				id="css-classes"
-				label="CSS Classes"
+				id="custom-styles"
+				label="Custom Global Styles"
 				sx={{
 					background: `linear-gradient(0, #1D267DAA 0%, #46458CAA 100%),
     url(https://grainy-gradients.vercel.app/noise.svg)`,
 					filter: 'contrast(1.8)',
 				}}
 			>
+				<CustomStylesBlock />
+			</PageBlock>
+			<PageBlock
+				id="css-classes"
+				label="CSS Classes"
+				sx={{
+					background: `linear-gradient(0, #1D267DAA 0%, #46458CAA 100%),
+    url(https://grainy-gradients.vercel.app/noise.svg)`,
+					filter: 'contrast(1.5)',
+				}}
+			>
 				<ClassListTable />
 			</PageBlock>
-
 			<PageFooter>
 				<Footer />
 			</PageFooter>

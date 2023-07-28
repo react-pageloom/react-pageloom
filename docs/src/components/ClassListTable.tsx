@@ -218,9 +218,23 @@ function ClassListTable() {
 			}}
 		>
 			<Title>Styling</Title>
+			<LightFont
+				style={{
+					textAlign: 'center',
+					marginBottom: '2rem',
+				}}
+			>
+				If you want to be more specific with your styling, you can use the
+				global classes provided by the library.
+			</LightFont>
 			<Description>
 				Using the <StrongBlack>sx</StrongBlack> prop or css file, you can style
-				the components however you want.
+				the components however you want by targeting the global classes. For
+				more information,
+				<Anchor href="https://theme-ui.com/sx-prop" target="_blank">
+					click here
+				</Anchor>
+				.
 			</Description>
 
 			<StyledTable {...getTableProps()}>

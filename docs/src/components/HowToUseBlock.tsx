@@ -5,7 +5,7 @@ import { styled } from 'styled-components';
 import { WHITE } from '../constants';
 import { LightFont } from './HeroContent';
 
-const DescriptionWrapper = styled.div`
+export const DescriptionWrapper = styled.div`
 	width: 90%;
 	margin: 0 auto;
 	box-sizing: border-box;
@@ -14,7 +14,7 @@ const DescriptionWrapper = styled.div`
 		width: 100%;
 	}
 `;
-const ComponentDescription = styled.div`
+export const ComponentDescription = styled.div`
 	font-size: 1rem;
 	color: ${WHITE};
 	padding: 0.2em 0.4em;
@@ -42,7 +42,7 @@ export const StrongBlack = styled(Strong)`
 	color: ${WHITE};
 `;
 
-const FlexContainer = styled.div`
+export const FlexContainer = styled.div`
 	display: flex;
 	flex-direction: row;
 	gap: 1em;
