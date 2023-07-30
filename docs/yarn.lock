@@ -2589,9 +2589,9 @@ react-is@^16.13.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-"react-pageloom@file:./react-pageloom-0.0.1255.tgz":
-  version "0.0.4"
-  resolved "file:./react-pageloom-0.0.1255.tgz#fd68c2f9d7b1e8387adbc5a586b84c7be2140e6c"
+"react-pageloom@file:./react-pageloom-6.1.0.tgz":
+  version "0.1.0"
+  resolved "file:./react-pageloom-6.1.0.tgz#f80c854c643ebe44d9a4347142407193c3f2f52c"
   dependencies:
     "@babel/runtime" "^7.22.5"
     "@types/react-scroll" "^1.8.7"

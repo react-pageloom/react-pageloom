@@ -154,6 +154,7 @@ export const NavDrawerLinkContainer = styled.div<{
 
 		& a.loom-nav_link {
 			text-decoration: none;
+			text-align: center;
 			color: ${theme.colors.navText};
 			background-color: ${theme.colors.navBackground};
 			padding: 0.5rem 1rem;

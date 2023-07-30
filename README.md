@@ -13,28 +13,16 @@ Each section, or "block", spans the entire viewport, effectively filling 100% of
 
 You can see an example of a web page created using React PageLoom and full documentation of the package [here](https://react-pageloom.github.io/react-pageloom/).
 
-## What do you get?
+## Example and Usage
 
-Build the application by utilizing the following components: `PageHeader`, `PageBlock`, and `PageFooter`. The navigation component will be added automatically.
-You can style each component using the `sx` prop or by using the custom classes that are added to each component. For all the classes check the documentation page.
+Check out the [live demo](https://pageloom-example.netlify.app/) to see the result.
 
-<p align="center">
-<img width="250" alt="image" src="https://github.com/react-pageloom/react-pageloom/assets/60644723/22484050-9b22-4ddb-b4fa-baa8aef5299c">
-</p>
+The following code creates a simple web page with a header, two blocks, and a footer. The navigation bar is automatically generated based on the blocks and their labels.
 
-## Installation
+<details>
+  <summary>Code Example</summary>
 
-```bash
-npm install react-pageloom
-```
-
-```bash
-yarn add react-pageloom
-```
-
-## Usage
-
-```jsx
+```tsx
 import {
 	Container,
 	HeaderLogo,
@@ -46,22 +34,70 @@ import {
 
 function App() {
 	return (
-		<PageWrapper>
-			<PageHeader> -- Header Content -- </PageHeader>
-			<PageBlock id="block1" label="About me">
-				{' '}
-				-- About Content --{' '}
+		<PageWrapper
+			sx={{
+				fontFamily: 'Montserrat',
+			}}
+		>
+			<PageHeader>
+				<HeaderLogo>PageLoom Example</HeaderLogo>
+				<Container>
+					This is <code>PageHeader</code> with <code>Container</code>
+				</Container>
+			</PageHeader>
+			<PageBlock id="block-1" label="PageBlock 1">
+				<Container>
+					<h1>
+						This is <code>PageBlock</code> with <code>Container</code>
+					</h1>
+				</Container>
 			</PageBlock>
-			<PageBlock id="block2" label="Projects">
-				{' '}
-				-- Projects Content --{' '}
+			<PageBlock
+				id="block-2"
+				label="PageBlock 2"
+				sx={{
+					backgroundColor: 'lightblue',
+				}}
+			>
+				<h1>
+					This is <code>PageBlock</code> without <code>Container</code>
+				</h1>
 			</PageBlock>
-			<PageFooter> -- Footer Content -- </PageFooter>
+			<PageFooter>
+				<h1>
+					This is the footer with <code>PageFooter</code>
+				</h1>
+			</PageFooter>
 		</PageWrapper>
 	);
 }
 
 export default App;
+```
+
+</details>
+
+## What do you get?
+
+Build the application by utilizing the following components: `PageHeader`, `PageBlock`, and `PageFooter`. The navigation component will be added automatically.
+You can style each component using the `sx` prop or by using the custom classes that are added to each component. For all the classes check the documentation page.
+
+<p align="center">
+<img width="250" alt="image" src="https://github.com/react-pageloom/react-pageloom/assets/60644723/22484050-9b22-4ddb-b4fa-baa8aef5299c">
+</p>
+
+## Installation
+
+If you use npm:
+
+```bash
+npm install react-pageloom
+```
+
+If you use yarn:
+
+```bash
+yarn add react-pageloom
 ```
 
 ## Features
@@ -80,6 +116,30 @@ export default App;
 - `PageBlock`: Use it to create distinct sections on your page. Each block occupies at least the height of your viewport.
 - `Container`: An optional component that can be used inside blocks for centering content and maintaining a fixed width.
 
+## Global Theme
+
+React PageLoom offers a global theme that can be used to customize the appearance of the entire web page. The theme can be customized by passing a `theme` object to the `PageWrapper` component.
+Check out the documentation page for more information.
+
+```tsx
+const myTheme = {
+	// Example theme object
+	colors: {
+		text: '#243c5a', // Deep Sea Blue
+		background: '#f9f871', // Sun Glow
+		primary: '#e84a5f', // Flamenco Red
+		secondary: '#ff8474', // Salmon Pink
+		navBackground: '#2a363b', // Swell Gray
+		navText: '#fecea8', // Peach Orange
+		activeLink: '#fe8a71', // Bittersweet
+		hoverLink: '#e84a5f', // Flamenco Red
+		mobileMenuBackground: '#2a363b', // Swell Gray
+	},
+};
+
+<PageWrapper theme={myTheme}>...</PageWrapper>;
+```
+
 ## Contributing
 
 We appreciate all contributions. To contribute, please fork the repository and create a new branch for each feature or bugfix. Then, submit a pull request with a detailed description of your changes.
@@ -88,4 +148,4 @@ We appreciate all contributions. To contribute, please fork the repository and c
 
 React PageLoom is [MIT licensed](./LICENSE).
 
-For more information, please visit our [documentation](#).
+For more information, please visit our [documentation](https://react-pageloom.github.io/react-pageloom/).
