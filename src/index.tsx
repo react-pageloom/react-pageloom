@@ -8,5 +8,6 @@ export * from './components/logo';
 
 // Theme
 export { default as styled } from '@emotion/styled';
-export { default as css } from '@emotion/styled';
+export { useTheme } from '@emotion/react';
+export { css } from '@emotion/react';
 export { default as defaultTheme } from './theme';

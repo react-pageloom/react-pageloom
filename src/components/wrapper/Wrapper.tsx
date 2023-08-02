@@ -59,6 +59,10 @@ export interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 	 * Children of the `PageWrapper` component. Can be `PageHeader`, `PageBlock`, and `PageFooter` components.
 	 */
 	children?: React.ReactNode | PageChild[];
+	/**
+	 *  Extra components to render in the navigation bar. Useful for rendering a search bar or a shopping cart icon.
+	 */
+	extraNavComponent?: React.ReactNode;
 	sx?: ThemeUICSSObject;
 }
 
@@ -90,6 +94,7 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 			fixedNav = false,
 			drawerNav = false,
 			theme,
+			extraNavComponent,
 			...rest
 		},
 		ref,
@@ -112,6 +117,8 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 					snap: snapScroll,
 					fixedNav,
 				};
+				if (!fixedNav) headerProps.extraNavComponent = extraNavComponent;
+
 				header = cloneElement(child as ReactElement, headerProps);
 				logoElement = (child as ReactElement).props.children.find(
 					(child) => child.type === HeaderLogo,
@@ -206,6 +213,7 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 							snapScroll={snapScroll}
 							fixedNav={fixedNav}
 							drawerNav={drawerNav}
+							extraComponents={extraNavComponent}
 						/>
 					)}
 					{enhancedHeader}

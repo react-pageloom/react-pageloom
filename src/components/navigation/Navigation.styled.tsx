@@ -37,6 +37,10 @@ export const Nav = styled.nav<{ $fixed: boolean; theme: Theme }>`
 				border-radius: 0.5rem;
 				transition: all 100ms ease-in-out;
 				cursor: pointer;
+
+				max-height: ${NAVBAR_HEIGHT - 7}px;
+				box-sizing: border-box;
+				overflow: hidden;
 			}
 		}
 
@@ -163,4 +167,15 @@ export const NavDrawerLinkContainer = styled.div<{
 			cursor: pointer;
 		}
 	`}
+`;
+
+export const NavExtraComponentsContainer = styled.div`
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 1rem;
+
+	@media (max-width: ${SCREEN_MD}px) {
+		flex: 1;
+	}
 `;

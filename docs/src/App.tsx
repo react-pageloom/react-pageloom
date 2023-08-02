@@ -5,6 +5,7 @@ import {
 	PageWrapper,
 	PageFooter,
 } from 'react-pageloom';
+import { styled } from 'react-pageloom';
 import PropsTable from './components/PropsTable';
 import HowToUseBlock from './components/HowToUseBlock';
 import HeroContent from './components/HeroContent';
@@ -12,6 +13,24 @@ import Footer from './components/Footer';
 import { ReactLogoText } from './components/Logo';
 import ClassListTable from './components/ClassListTable';
 import CustomStylesBlock from './components/StylingBlock';
+
+const StyledSelect = styled('select')(({ theme }) => ({
+	border: 'none',
+	borderRight: `8px solid transparent`,
+	// @ts-ignore
+	background: theme.colors.activeLink,
+	// @ts-ignore
+	color: theme.colors.text,
+	fontSize: 'inherit',
+	fontFamily: 'inherit',
+	padding: '0.5rem 1rem',
+	borderRadius: '0.5rem',
+	cursor: 'pointer',
+	transition: 'all 100ms ease-in-out',
+	'&:hover': {
+		filter: 'brightness(1.2)',
+	},
+}));
 
 function App() {
 	const theme = {
@@ -29,7 +48,19 @@ function App() {
 	};
 
 	return (
-		<PageWrapper fixedNav drawerNav theme={theme}>
+		<PageWrapper
+			fixedNav
+			drawerNav
+			theme={theme}
+			extraNavComponent={
+				<StyledSelect name="theme" id="theme-select">
+					<option value="sunshine">Sunshine</option>
+					<option value="rainbow">Rainbow</option>
+					<option value="unicorn">Unicorn</option>
+					<option value="moon">Moon</option>
+				</StyledSelect>
+			}
+		>
 			<PageHeader>
 				<HeaderLogo
 					sx={{

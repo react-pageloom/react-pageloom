@@ -7,6 +7,7 @@ import { PageDrawer } from '../drawer';
 import {
 	Nav,
 	NavDrawerLinkContainer,
+	NavExtraComponentsContainer,
 	NavLinksContainer,
 	NavLogoContainer,
 	NavMobileButton,
@@ -152,6 +153,10 @@ interface NavigationProps extends React.HTMLAttributes<HTMLDivElement> {
 	 * @default false
 	 * */
 	drawerNav?: boolean;
+	/**
+	 * @internal Extra components to render in the navigation bar
+	 */
+	extraComponents?: React.ReactNode | React.ReactNode[];
 }
 
 /**
@@ -168,6 +173,7 @@ export const PageNavigation = forwardRef<HTMLDivElement, NavigationProps>(
 			duration = 500,
 			blockLinks,
 			drawerNav = false,
+			extraComponents,
 			...rest
 		},
 		ref,
@@ -204,6 +210,11 @@ export const PageNavigation = forwardRef<HTMLDivElement, NavigationProps>(
 				<NavLinksContainer className="loom-navigation_nav-links">
 					{blockLinks}
 				</NavLinksContainer>
+				{extraComponents && (
+					<NavExtraComponentsContainer className="loom-navigation_nav-extra-components">
+						{extraComponents}
+					</NavExtraComponentsContainer>
+				)}
 				<PageMobileNav blockLinks={blockLinks} drawerNav={drawerNav} />
 			</Nav>
 		);
