@@ -14,6 +14,7 @@ import { Container } from 'react-pageloom';
 import { Strong, StrongBlack } from './HowToUseBlock';
 import { WHITE } from '../constants';
 import { LightFont } from './HeroContent';
+import { Theme } from '../theme';
 
 const StyledTable = styled.table`
 	border-spacing: 0;
@@ -119,7 +120,11 @@ interface IData {
 	component: React.ReactElement;
 }
 
-function PropsTable() {
+interface Props {
+	theme: Theme;
+}
+
+function PropsTable({ theme }: Props) {
 	const data = useMemo<IData[]>(
 		() => [
 			{
@@ -192,8 +197,8 @@ function PropsTable() {
 				justifyContent: 'space-around',
 			}}
 		>
-			<Title>Props</Title>
-			<Description>
+			<Title style={{ color: theme.colors.text }}>Props</Title>
+			<Description style={{ color: theme.colors.text }}>
 				This table showcases the optional props that you can pass to the React
 				Pageloom components. Each prop is listed with a description, the
 				component(s) it can be used with, and an example usage.

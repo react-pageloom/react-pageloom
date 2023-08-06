@@ -52,6 +52,7 @@ function App() {
 					<option value="light">Light</option>
 					<option value="dark">Dark</option>
 					<option value="retro">Rainbow</option>
+					<option value="pastel">Pastel</option>
 				</StyledSelect>
 			}
 		>
@@ -62,12 +63,13 @@ function App() {
 						'&:hover': {
 							filter: 'brightness(3)',
 						},
+						color: theme.colors.headerText,
 					}}
 				>
 					<ReactLogoText />
 					PageLoom
 				</HeaderLogo>
-				<HeroContent />
+				<HeroContent theme={theme} />
 			</PageHeader>
 			<PageBlock
 				id="how-to-use"
@@ -77,7 +79,7 @@ function App() {
 					filter: 'contrast(1.8)',
 				}}
 			>
-				<HowToUseBlock />
+				<HowToUseBlock theme={theme} />
 			</PageBlock>
 			<PageBlock
 				id="optional-props"
@@ -87,7 +89,7 @@ function App() {
 					filter: 'contrast(1.5)',
 				}}
 			>
-				<PropsTable />
+				<PropsTable theme={theme} />
 			</PageBlock>
 			<PageBlock
 				id="custom-styles"

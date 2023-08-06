@@ -4,6 +4,8 @@ import { Container } from 'react-pageloom';
 import { styled } from 'styled-components';
 import { WHITE } from '../constants';
 import { LightFont } from './HeroContent';
+import { Theme } from '../theme';
+import { useState } from 'react';
 
 export const DescriptionWrapper = styled.div`
 	width: 90%;
@@ -54,7 +56,39 @@ export const FlexContainer = styled.div`
 	}
 `;
 
-function HowToUseBlock() {
+interface HowToUseBlockProps {
+	theme: Theme;
+}
+
+function HowToUseBlock({ theme }: HowToUseBlockProps) {
+	const [copied, setCopied] = useState(false);
+
+	const handleCopyClick = () => {
+		const codeText = `<PageWrapper>
+  <PageHeader>
+    <HeaderLogo>Logo</HeaderLogo>
+    <Container>
+      {/* Your content here */}
+    </Container>
+  </PageHeader>
+  <PageBlock id="block-1" label="About">
+    <Container>
+      {/* Your content here */}
+    </Container>
+  </PageBlock>
+  <PageBlock id="block-2" label="Location">
+    {/* Your content here */}
+  </PageBlock>
+  <PageFooter>
+    {/* Your content here */}
+  </PageFooter>
+</PageWrapper>`;
+		navigator.clipboard.writeText(codeText);
+		setCopied(true);
+		setTimeout(() => {
+			setCopied(false);
+		}, 5000);
+	};
 	return (
 		<Container
 			centered
@@ -74,16 +108,28 @@ function HowToUseBlock() {
 				How to use?
 			</h1>
 			<FlexContainer>
-				<div
-					style={{
-						boxSizing: 'border-box',
-						width: '100%',
-						padding: '0',
-						margin: '0',
-					}}
-				>
-					<SyntaxHighlighter language="tsx" style={coldarkDark}>
-						{`<PageWrapper>
+				<div style={{ position: 'relative' }}>
+					<button
+						style={{
+							position: 'absolute',
+							top: '20px',
+							right: '10px',
+							zIndex: '1',
+						}}
+						onClick={handleCopyClick}
+					>
+						{copied ? 'Copied!' : 'Copy'}
+					</button>
+					<div
+						style={{
+							boxSizing: 'border-box',
+							width: '100%',
+							padding: '0',
+							margin: '0',
+						}}
+					>
+						<SyntaxHighlighter language="tsx" style={coldarkDark}>
+							{`<PageWrapper>
   <PageHeader>
     <HeaderLogo>Logo</HeaderLogo>
     <Container>
@@ -103,31 +149,53 @@ function HowToUseBlock() {
   </PageFooter>
 </PageWrapper>
 `}
-					</SyntaxHighlighter>
+						</SyntaxHighlighter>
+					</div>
 				</div>
+
 				<DescriptionWrapper>
-					<ComponentDescription>
+					<ComponentDescription
+						style={{
+							color: theme.colors.text,
+						}}
+					>
 						<Strong>PageWrapper:</Strong> Serves as the parent component
 						encompassing the entire page.
 					</ComponentDescription>
 
-					<ComponentDescription>
+					<ComponentDescription
+						style={{
+							color: theme.colors.text,
+						}}
+					>
 						<Strong>PageHeader:</Strong> Designates the header section of the
 						page. Ideal for top-level navigation or introductory content.
 					</ComponentDescription>
 
-					<ComponentDescription>
+					<ComponentDescription
+						style={{
+							color: theme.colors.text,
+						}}
+					>
 						<Strong>PageBlock:</Strong> Represents a main content section of the
 						page. Utilize multiple <StrongBlack>PageBlocks</StrongBlack> to
 						structure your page content.
 					</ComponentDescription>
 
-					<ComponentDescription>
+					<ComponentDescription
+						style={{
+							color: theme.colors.text,
+						}}
+					>
 						<Strong>PageFooter:</Strong> Specifies the footer section of the
 						page, perfect for secondary information or links.
 					</ComponentDescription>
 
-					<ComponentDescription>
+					<ComponentDescription
+						style={{
+							color: theme.colors.text,
+						}}
+					>
 						<Strong>Container (optional):</Strong> A versatile container for
 						content within <StrongBlack>PageBlocks</StrongBlack>,{' '}
 						<StrongBlack>PageHeader</StrongBlack>, or{' '}
@@ -135,7 +203,11 @@ function HowToUseBlock() {
 						and ensure responsiveness.
 					</ComponentDescription>
 
-					<ComponentDescription>
+					<ComponentDescription
+						style={{
+							color: theme.colors.text,
+						}}
+					>
 						<Strong>HeaderLogo (optional):</Strong> Use this within the{' '}
 						<StrongBlack>PageHeader</StrongBlack>
 						to display your logo.

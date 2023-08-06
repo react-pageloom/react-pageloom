@@ -3,6 +3,8 @@ import ScrollText from './ScrollText';
 import Logo from './Logo';
 import { styled } from 'styled-components';
 import { Strong } from './HowToUseBlock';
+import { Theme } from '../theme';
+
 
 export const LightFont = styled.span`
 	font-weight: 300;
@@ -13,16 +15,33 @@ export const LightFont = styled.span`
 	text-align: center;
 `;
 
-export const Text = styled.h1`
-	font-size: 2rem;
-	line-height: 1.5;
+// export const LightFont = styled('span')(({ theme }) => ({
+// 	fontWeight: 300,
+// 	fontSize: '1.2rem',
+// 	backgroundColor: 'rgba(255, 255, 255, 0.2)',
+// 	padding: '0.5rem',
+// 	lineHeight: '1.8',
+// 	textAlign: 'center',
+// 	// @ts-ignore
+// 	color: theme.colors.text || '#333333',
+// }));
 
-	@media (max-width: 768px) {
-		font-size: 1.5rem;
-	}
-`;
+export const Text = styled('h1')(({ theme }) => ({
+	// @ts-ignore
+	color: theme.colors.text || '#333333',
+	fontSize: '2rem',
+	lineHeight: '1.5',
+	'@media (max-width: 768px)': {
+		fontSize: '1.5rem',
+	},
+}));
 
-function HeroContent() {
+
+interface HeroContentProps {
+	theme: Theme;
+}
+
+function HeroContent({ theme }: HeroContentProps) {
 	return (
 		<Container
 			fluid
@@ -55,7 +74,7 @@ function HeroContent() {
 				<source src="public/videos/hero_video.mp4" type="video/mp4" />
 			</video>
 			<ScrollText title={<Logo />}>
-				<Text>
+				<Text theme={theme}>
 					PageLoom is a powerful, flexible library for React.js that simplifies
 					the process of creating stunning, interactive webpage layouts. It
 					leverages the concept of <Strong>Blocks</Strong>, providing an
@@ -66,7 +85,11 @@ function HeroContent() {
 				<br />
 				<br />
 				<br />
-				<LightFont>
+				<LightFont
+					style={{
+						color: theme.colors.text,
+					}}
+				>
 					As an example, this part of the page is constructed using the{' '}
 					<code>PageHeader</code> component.
 				</LightFont>
