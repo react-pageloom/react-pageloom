@@ -140,6 +140,51 @@ const myTheme = {
 <PageWrapper theme={myTheme}>...</PageWrapper>;
 ```
 
+## Light and Dark Mode (and more)
+
+With the theme object, you can also customize the appearance of the page based on the user's preferences. Multiple themes can be defined and switched between using the `theme` prop of the `PageWrapper` component.
+Check out the documentation page for more information or see the example below.
+
+```tsx
+export const useTheme = (themeMode: ThemeProps) => {
+	switch (themeMode) {
+		case 'light':
+			return lightTheme;
+		case 'dark':
+			return darkTheme;
+		case 'retro':
+			return retroTheme;
+		case 'pastel':
+			return pastelTheme;
+		default:
+			return lightTheme;
+	}
+};
+
+	const [currentTheme, setCurrentTheme] = useState<ThemeProps>('light');
+	const theme = useTheme(themeName);
+
+	return (
+		<PageWrapper
+			fixedNav
+			drawerNav
+			theme={currentTheme}
+			// You can add extra components to the navigation bar like this
+			extraNavComponent={
+				<StyledSelect
+					name="theme"
+					onChange={(event) => setCurrentTheme(event.target.value as ThemeProps)}
+				>
+					<option value="light">Light</option>
+					<option value="dark">Dark</option>
+					<option value="retro">Rainbow</option>
+					<option value="pastel">Pastel</option>
+				</StyledSelect>
+			}
+		>
+		...
+```
+
 ## Contributing
 
 We appreciate all contributions. To contribute, please fork the repository and create a new branch for each feature or bugfix. Then, submit a pull request with a detailed description of your changes.
