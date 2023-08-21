@@ -197,7 +197,7 @@ export const PageNavigation = forwardRef<HTMLDivElement, NavigationProps>(
 						});
 
 						setTimeout(() => {
-							window.history.pushState(
+							window.history.replaceState(
 								'',
 								document.title,
 								window.location.pathname + window.location.search,
