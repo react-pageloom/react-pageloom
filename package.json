@@ -121,7 +121,7 @@
 		"rollup-plugin-delete": "^2.0.0",
 		"rollup-plugin-peer-deps-external": "^2.2.4",
 		"rollup-plugin-typescript2": "^0.34.1",
-		"theme-ui": "^0.15.7",
+		"theme-ui": "^0.16.1",
 		"ts-jest": "^29.1.0",
 		"tslib": "^2.5.0",
 		"ttypescript": "^1.5.15",
