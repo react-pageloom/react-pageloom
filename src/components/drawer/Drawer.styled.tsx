@@ -7,7 +7,7 @@ export const Drawer = styled.div<{ open: boolean; theme: Theme }>`
 	top: 0;
 	bottom: 0;
 	right: 0;
-	width: 40%;
+	width: 50%;
 	background-color: ${({ theme }) => theme.colors.primary};
 	color: ${({ theme }) => theme.colors.text};
 	box-shadow: -2px 0px 4px ${({ theme }) => rgba(theme.colors.text, 0.1)};

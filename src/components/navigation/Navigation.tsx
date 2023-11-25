@@ -100,12 +100,22 @@ export const PageMobileNav = ({
 						sx={{
 							flexDirection: 'column',
 							paddingTop: '2rem',
+							paddingLeft: '1rem',
+							paddingRight: '1rem',
 						}}
 					>
 						{blockLinks.map((link: React.ReactNode, index: number) => (
 							<NavDrawerLinkContainer
 								key={`loom-link-drawer-${index}`}
 								className="loom-header_nav-links-drawer-item"
+								sx={{
+									width: '100%',
+									display: 'flex',
+									justifyContent: 'center',
+									backgroundColor: 'white',
+									padding: '4px',
+									borderRadius: '0.5rem',
+								}}
 							>
 								{createElement((link as React.ReactElement).type, {
 									...(link as React.ReactElement).props,
@@ -197,7 +207,7 @@ export const PageNavigation = forwardRef<HTMLDivElement, NavigationProps>(
 						});
 
 						setTimeout(() => {
-							window.history.pushState(
+							window.history.replaceState(
 								'',
 								document.title,
 								window.location.pathname + window.location.search,

@@ -146,14 +146,14 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 		});
 
 		const handleSetActive = (to: string) => {
-			window.history.pushState({}, '', `#${to}`);
+			window.history.replaceState({}, '', `#${to}`);
 		};
 
 		useEffect(() => {
 			const hash = window.location.hash.substring(1);
 			const removeHashOnTop = () => {
 				if (window.scrollY === 0) {
-					window.history.pushState({}, '', window.location.pathname);
+					window.history.replaceState({}, '', window.location.pathname);
 				}
 			};
 

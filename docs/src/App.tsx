@@ -13,6 +13,8 @@ import Footer from './components/Footer';
 import { ReactLogoText } from './components/Logo';
 import ClassListTable from './components/ClassListTable';
 import CustomStylesBlock from './components/StylingBlock';
+import { useTheme, ThemeProps } from './theme';
+import { useState } from 'react';
 
 const StyledSelect = styled('select')(({ theme }) => ({
 	border: 'none',
@@ -33,19 +35,8 @@ const StyledSelect = styled('select')(({ theme }) => ({
 }));
 
 function App() {
-	const theme = {
-		colors: {
-			text: '#f8f9fa',
-			background: '#ffffff',
-			primary: '#46458CE6',
-			secondary: 'transparent',
-			navBackground: '#f8f9fa',
-			navText: '#333333',
-			activeLink: '#46458C',
-			hoverLink: '#46458C',
-			mobileMenuBackground: '#f8f9fa',
-		},
-	};
+	const [themeName, setThemeName] = useState<ThemeProps>('light');
+	const theme = useTheme(themeName);
 
 	return (
 		<PageWrapper
@@ -53,11 +44,15 @@ function App() {
 			drawerNav
 			theme={theme}
 			extraNavComponent={
-				<StyledSelect name="theme" id="theme-select">
-					<option value="sunshine">Sunshine</option>
-					<option value="rainbow">Rainbow</option>
-					<option value="unicorn">Unicorn</option>
-					<option value="moon">Moon</option>
+				<StyledSelect
+					name="theme"
+					id="theme-select"
+					onChange={(event) => setThemeName(event.target.value as ThemeProps)}
+				>
+					<option value="light">Light</option>
+					<option value="dark">Dark</option>
+					<option value="retro">Rainbow</option>
+					<option value="pastel">Pastel</option>
 				</StyledSelect>
 			}
 		>
@@ -68,41 +63,39 @@ function App() {
 						'&:hover': {
 							filter: 'brightness(3)',
 						},
+						color: theme.colors.headerText,
 					}}
 				>
 					<ReactLogoText />
 					PageLoom
 				</HeaderLogo>
-				<HeroContent />
+				<HeroContent theme={theme} />
 			</PageHeader>
 			<PageBlock
 				id="how-to-use"
 				label="How to use?"
 				sx={{
-					background: `linear-gradient(0, #1D267DAA 0%, #46458CAA 100%),
-    url(https://grainy-gradients.vercel.app/noise.svg)`,
+					background: theme.colors.blockOneBackground,
 					filter: 'contrast(1.8)',
 				}}
 			>
-				<HowToUseBlock />
+				<HowToUseBlock theme={theme} />
 			</PageBlock>
 			<PageBlock
 				id="optional-props"
 				label="Props"
 				sx={{
-					background: `linear-gradient(90deg, #46458CAA 0%, #6554AF99 100%),
-					url(https://grainy-gradients.vercel.app/noise.svg)`,
+					background: theme.colors.blockTwoBackground,
 					filter: 'contrast(1.5)',
 				}}
 			>
-				<PropsTable />
+				<PropsTable theme={theme} />
 			</PageBlock>
 			<PageBlock
 				id="custom-styles"
 				label="Custom Global Styles"
 				sx={{
-					background: `linear-gradient(0, #1D267DAA 0%, #46458CAA 100%),
-    url(https://grainy-gradients.vercel.app/noise.svg)`,
+					background: theme.colors.blockThreeBackground,
 					filter: 'contrast(1.8)',
 				}}
 			>
@@ -112,8 +105,7 @@ function App() {
 				id="css-classes"
 				label="CSS Classes"
 				sx={{
-					background: `linear-gradient(0, #1D267DAA 0%, #46458CAA 100%),
-    url(https://grainy-gradients.vercel.app/noise.svg)`,
+					background: theme.colors.blockFourBackground,
 					filter: 'contrast(1.5)',
 				}}
 			>

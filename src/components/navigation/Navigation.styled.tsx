@@ -165,6 +165,7 @@ export const NavDrawerLinkContainer = styled.div<{
 			border-radius: 0.5rem;
 			transition: all 100ms ease-in-out;
 			cursor: pointer;
+			word-wrap: break-word;
 		}
 	`}
 `;
