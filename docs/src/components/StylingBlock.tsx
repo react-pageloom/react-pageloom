@@ -1,10 +1,17 @@
-import { Container } from 'react-pageloom';
+import { Container, styled } from 'react-pageloom';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { LightFont } from './HeroContent';
 import { StrongBlack } from './HowToUseBlock';
 import { useState } from 'react';
 
+export const FlexContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	width: 100%;
+	box-sizing: border-box;
+`;
 function CustomStylesBlock() {
 	const [copied, setCopied] = useState(false);
 
@@ -72,36 +79,37 @@ export default MyApp;
 			>
 				How to use Custom Styles?
 			</h1>
-			<LightFont
-				style={{
-					textAlign: 'center',
-				}}
-			>
-				In case you want to customize the styles of the PageLoom components, you
-				can do so by passing a theme object to the
-				<StrongBlack>PageWrapper</StrongBlack> component. All the components
-				will inherit the styles from the theme object. Available theme
-				properties are listed below.
-			</LightFont>
-			<div style={{ position: 'relative' }}>
-				<button
+			<FlexContainer>
+				<LightFont
 					style={{
-						position: 'absolute',
-						top: '20px',
-						right: '10px',
-						zIndex: '1',
-					}}
-					onClick={handleCopyClick}
-				>
-					{copied ? 'Copied!' : 'Copy'}
-				</button>
-				<div
-					style={{
-						width: '100%',
+						textAlign: 'center',
 					}}
 				>
-					<SyntaxHighlighter language="jsx" style={coldarkDark}>
-						{`import { PageWrapper, PageHeader, 
+					In case you want to customize the styles of the PageLoom components,
+					you can do so by passing a theme object to the
+					<StrongBlack>PageWrapper</StrongBlack> component. All the components
+					will inherit the styles from the theme object. Available theme
+					properties are listed below.
+				</LightFont>
+				<div style={{ position: 'relative' }}>
+					<button
+						style={{
+							position: 'absolute',
+							top: '20px',
+							right: '10px',
+							zIndex: '1',
+						}}
+						onClick={handleCopyClick}
+					>
+						{copied ? 'Copied!' : 'Copy'}
+					</button>
+					<div
+						style={{
+							width: '100%',
+						}}
+					>
+						<SyntaxHighlighter language="jsx" style={coldarkDark}>
+							{`import { PageWrapper, PageHeader, 
           PageBlock, PageFooter } from 'react-pageloom';
 
 const myTheme = {
@@ -139,19 +147,20 @@ function MyApp() {
 
 export default MyApp;
 `}
-					</SyntaxHighlighter>
+						</SyntaxHighlighter>
+					</div>
 				</div>
-			</div>
-			<LightFont
-				style={{
-					textAlign: 'center',
-					margin: '2rem 0',
-				}}
-			>
-				Use the <StrongBlack>styled</StrongBlack> function to create styled
-				components that have access to the theme object. You can access theme
-				colors and other theme properties in your component styles.
-			</LightFont>
+				<LightFont
+					style={{
+						textAlign: 'center',
+						margin: '2rem 0',
+					}}
+				>
+					Use the <StrongBlack>styled</StrongBlack> function to create styled
+					components that have access to the theme object. You can access theme
+					colors and other theme properties in your component styles.
+				</LightFont>
+			</FlexContainer>
 		</Container>
 	);
 }
