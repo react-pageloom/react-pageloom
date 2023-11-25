@@ -1,5 +1,5 @@
 /** @jsxImportSource theme-ui */
-import { Global } from '@emotion/react';
+import { Global, useTheme } from '@emotion/react';
 import { Theme } from '@src/theme';
 import emotionReset from 'emotion-reset';
 import {
@@ -198,7 +198,13 @@ export const PageWrapper = forwardRef<HTMLDivElement, WrapperProps>(
 
 		return (
 			<ThemeWrapper theme={theme}>
-				<Global styles={{ ...emotionReset, boxSizing: 'border-box' }} />
+				<Global
+					styles={{
+						...emotionReset,
+						boxSizing: 'border-box',
+						backgroundColor: theme?.colors?.background,
+					}}
+				/>
 				<Wrapper
 					id="loom-wrapper"
 					className={classes}

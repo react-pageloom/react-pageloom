@@ -44,6 +44,12 @@ export const Nav = styled.nav<{ $fixed: boolean; theme: Theme }>`
 			}
 		}
 
+		@media (max-width: ${SCREEN_MD}px) {
+			& a.loom-nav_link {
+				width: 100%;
+			}
+		}
+
 		& a.loom-nav_link:hover {
 			background-color: ${theme.colors.hoverLink};
 			color: ${theme.colors.background};
@@ -155,6 +161,10 @@ export const NavDrawerLinkContainer = styled.div<{
 		justify-content: flex-end;
 		align-items: center;
 		gap: 1rem;
+
+		& .loom-header_nav-links-drawer-item {
+			background-color: ${theme.colors.secondary};
+		}
 
 		& a.loom-nav_link {
 			text-decoration: none;
